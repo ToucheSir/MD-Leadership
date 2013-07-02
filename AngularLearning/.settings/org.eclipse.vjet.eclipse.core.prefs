@@ -1,0 +1,7 @@
+GLOBAL_RULES=Default
+JAVASCRIPT_SEMANTIC=Default
+JAVA_COMPAT_TYPE_CHECK=Ignore
+TYPE_CHECK=Warning
+VJETVALIDATION=true
+VJO_SPECIFIC=Ignore
+eclipse.preferences.version=1

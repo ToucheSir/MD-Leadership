@@ -1,0 +1,30 @@
+<div class="container">
+	<h3>View No. One</h3>
+	
+	Name: <input type="text" data-ng-model="filter.student" />
+
+	<br />
+	
+	<ul>
+		<li data-ng-repeat="student in students | filter:filter.student | orderBy:'name'"
+		data-ng-animate="{event: 'mycss-animation'}">
+			{{ student.name }} - {{ student.grade }}
+		</li>
+	</ul>
+	
+	<br />
+	Student Name:<br />
+	<input type="text" data-ng-model="newStudent.name" />
+	
+	<br />
+	Student Grade:<br />
+	<input type="text" data-ng-model="newStudent.grade" />
+	<br />
+	
+	<button data-ng-click="addStudent()">Add Student</button>
+	
+	<br />
+	
+	<a href="#/view2">Go To View Two</a>
+	
+</div>
