@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html ng-app="">
+  <head>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.min.js
+"></script>  <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" />
+   <script type="text/javascript">
+     function testCtrl($scope) {
+       $scope.name = "World";
+       $scope.foo = 123;
+     }
+   </script> </head>
+  <body ngcontroller="testCtrl">
+    <h1>
+      Hello, {{name}}!</h1>
+    <br />
+    <span>$scope.foo = </span><code>{{foo}}</code> <input ng-model="name" type="text" /></body>
+</html>
