@@ -1,0 +1,22 @@
+<style type="text/css">
+	.list {
+		width: 50%;
+		border: solid;
+	}
+
+	h3 {
+		margin: 0;
+		padding: 0;
+	}
+</style>
+
+<div class="list" data-ng-repeat="event in events">
+	<h3>{{event.name}}</h3>
+
+	<p>
+		{{event.description}}
+	</p>
+
+	<button data-ng-hide="event.signedUp" data-ng-click="user.signUpFor(event)">Sign Me Up!</button>
+	<button data-ng-show="event.signedUp" data-ng-click="user.leave(event)">Leave Event</button>
+</div>
