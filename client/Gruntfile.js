@@ -18,6 +18,7 @@ module.exports = function ( grunt ) {
   grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-ngmin');
   grunt.loadNpmTasks('grunt-html2js');
+  grunt.loadNpmTasks('grunt-open');
 
   /**
    * Load in our build configuration file.
@@ -29,6 +30,7 @@ module.exports = function ( grunt ) {
    * instructions.
    */
   var taskConfig = {
+
     /**
      * We read in our `package.json` file so we can access the package name and
      * version. It's already there, so we don't repeat ourselves here.
@@ -91,6 +93,12 @@ module.exports = function ( grunt ) {
       '<%= build_dir %>', 
       '<%= compile_dir %>'
     ],
+
+    open: {
+      server: {
+        url: 'http://localhost:9019'
+      }
+    },
 
     /**
      * The `copy` task just copies files from A to B. We use it here to copy
@@ -528,7 +536,7 @@ module.exports = function ( grunt ) {
    * before watching for changes.
    */
   grunt.renameTask( 'watch', 'delta' );
-  grunt.registerTask( 'watch', [ 'build', 'karma:unit', 'delta' ] );
+  grunt.registerTask( 'watch', [ 'build', 'karma:unit', 'delta'] );
 
   /**
    * The default task is to build and compile.

@@ -16,6 +16,9 @@ angular.module( 'ngBoilerplate', [
 })
 
 .controller( 'AppCtrl', function AppCtrl ( $scope, $location ) {
+	$scope.why = function(why) {
+		return why === 'why????';
+	};
 })
 
 ;

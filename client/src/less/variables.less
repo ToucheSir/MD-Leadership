@@ -12,3 +12,12 @@
 
 @sansFontFamily: 'Roboto', sans-serif;
 
+/**
+ * FIXME (Brian) hack for 'border radius' mixin as of bootstrap 0.3.0
+ */
+.border-radius(@radius) {
+	border-radius: @radius;
+}
+
+/* FIXME (Brian) changed to @gray-light as of bootstrap 3.0.0 */
+@grayLight: @gray-light;

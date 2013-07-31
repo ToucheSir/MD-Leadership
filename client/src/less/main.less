@@ -11,17 +11,17 @@
  */
 
 @import '../../vendor/bootstrap/less/mixins.less';
-@import '../../vendor/bootstrap/less/reset.less';
-@import '../../vendor/bootstrap/less/utilities.less';
 @import '../../vendor/bootstrap/less/scaffolding.less';
 @import '../../vendor/bootstrap/less/type.less';
 @import '../../vendor/bootstrap/less/grid.less';
-@import '../../vendor/bootstrap/less/layouts.less';
 @import '../../vendor/bootstrap/less/navs.less';
 @import '../../vendor/bootstrap/less/navbar.less';
 @import '../../vendor/bootstrap/less/buttons.less';
 @import '../../vendor/bootstrap/less/button-groups.less';
 @import '../../vendor/bootstrap/less/dropdowns.less';
+@import '../../vendor/bootstrap/less/utilities.less';
+
+@import '../../vendor/bootstrap/less/forms.less';
 
 
 /**
@@ -79,20 +79,22 @@ h2 {
  * Navigation
  */
 
+
 .navbar {
   .navbar-inner {
-    padding: 0;
+    // padding: 0;
   }
 
   .nav {
-    margin: 0;
-    display: table;
-    width: 100%;
+    // margin: 0;
+    // display: table;
+    // width: 100%;
 
     li {
-      display: table-cell;
-      width: 1%;
+      // display: table-cell;
+      // width: 1%;
       float: none;
+      height: 100%;
 
       a {
         font-weight: bold;
@@ -103,12 +105,10 @@ h2 {
       
       &:first-child a {
         border-left: 0;
-        border-radius: 3px 0 0 3px;
       }
       
       &:last-child a {
         border-right: 0;
-        border-radius: 3px 0 0 3px;
       }
     }
   }
@@ -137,7 +137,7 @@ h2 {
       margin-left: 20px;
 
       a, a:visited {
-        color: @grayLight;
+        color: @grayLight; /* FIXME (Brian) changed to @gray-light as of bootstrap 3.0.0 */
         text-decoration: none;
         font-size: 40px;
         .transition( 250ms ease-in-out );
