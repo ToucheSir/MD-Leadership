@@ -1,0 +1,19 @@
+{
+  "browser": true,
+  "esnext": true,
+  "globals": {
+    "angular": true,
+    "describe": true,
+    "beforeEach": true,
+    "module": true,
+    "it": true,
+    "expect": true,
+    "inject": true
+  },
+  "globalstrict": false,
+  "quotmark": true,
+  "smarttabs": true,
+  "trailing": true,
+  "undef": true,
+  "unused": false
+}

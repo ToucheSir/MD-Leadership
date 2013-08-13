@@ -1,25 +1,16 @@
-angular.module( 'ngBoilerplate', [
-  'templates-app',
-  'templates-common',
-  'ngBoilerplate.home',
-  'ngBoilerplate.about',
-  'ui.state',
-  'ui.route'
+angular.module("MDLeadership", [
+	"templates-app",
+	"templates-common",
+	"titleService"
 ])
 
-.config( function myAppConfig ( $stateProvider, $urlRouterProvider ) {
-  $urlRouterProvider.otherwise( '/home' );
+.config(function myAppConfig($routeProvider) {
+	$routeProvider.otherwise("/home");
 })
 
-.run( function run ( titleService ) {
-  titleService.setSuffix( ' | ngBoilerplate' );
+.run(function run(titleService) {
+	titleService.setSuffix(" | MD Leadership");
 })
 
-.controller( 'AppCtrl', function AppCtrl ( $scope, $location ) {
-	$scope.why = function(why) {
-		return why === 'why????';
-	};
-})
-
-;
+.controller("AppCtrl", function AppCtrl($scope, $location) {});
 
