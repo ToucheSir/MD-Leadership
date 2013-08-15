@@ -7,7 +7,7 @@ angular.module("MDLeadership", [
 ])
 
 .config(function myAppConfig($routeProvider) {
-	$routeProvider.otherwise({ redirectTo: "/home" });
+	$routeProvider.otherwise("/home");
 })
 
 .run(function run(titleService) {
@@ -15,5 +15,4 @@ angular.module("MDLeadership", [
 })
 
 .controller("AppCtrl", function AppCtrl($scope, $location) {
-	$scope.noop = "foo";
 });
