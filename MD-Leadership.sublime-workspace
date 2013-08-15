@@ -1,0 +1,702 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"MD",
+				"MDLeadership"
+			],
+			[
+				"he",
+				"href"
+			],
+			[
+				"ti",
+				"titleService"
+			],
+			[
+				"hea",
+				"header	Tag"
+			],
+			[
+				"c",
+				"container"
+			],
+			[
+				"re",
+				"require"
+			],
+			[
+				"nav",
+				"navbar"
+			],
+			[
+				"back",
+				"background"
+			],
+			[
+				"op",
+				"options"
+			],
+			[
+				"border-righ",
+				"border-bottom-right-radius"
+			],
+			[
+				"grunt-co",
+				"grunt-contrib-coffee"
+			],
+			[
+				"angu",
+				"angular"
+			],
+			[
+				"an",
+				"angular"
+			],
+			[
+				"con",
+				"connect"
+			],
+			[
+				"g",
+				"grunt-contrib-connect"
+			],
+			[
+				"gru",
+				"grunt"
+			],
+			[
+				"grunt",
+				"grunt-contrib-copy"
+			],
+			[
+				"cont",
+				"controller"
+			],
+			[
+				"$r",
+				"$routeProvider.when	AngularJS"
+			],
+			[
+				"inp",
+				"myForm.input.$valid"
+			],
+			[
+				"Obj",
+				"OBJECT"
+			],
+			[
+				"i",
+				"input"
+			],
+			[
+				"f",
+				"form	Tag"
+			],
+			[
+				"ng-",
+				"ng-model	AngularJS"
+			],
+			[
+				"boots",
+				"bootstrapcdn"
+			],
+			[
+				"co",
+				"code	Tag"
+			],
+			[
+				"p",
+				"pre	Tag"
+			],
+			[
+				"s",
+				"slide"
+			],
+			[
+				"Aler",
+				"AlertDemoCtrl"
+			],
+			[
+				"boot",
+				"bootstrapSpike"
+			],
+			[
+				"us",
+				"username"
+			],
+			[
+				"new",
+				"newUser"
+			],
+			[
+				"ne",
+				"newUser"
+			],
+			[
+				"u",
+				"userId"
+			],
+			[
+				"User",
+				"UserDetailController"
+			],
+			[
+				"$ro",
+				"$routParams"
+			],
+			[
+				"Use",
+				"UserListController"
+			],
+			[
+				"$re",
+				"$rootScope"
+			],
+			[
+				"user",
+				"userId"
+			],
+			[
+				"$ht",
+				"$httpBackend"
+			],
+			[
+				"scr",
+				"scripts"
+			],
+			[
+				"div",
+				"div"
+			],
+			[
+				"n",
+				"angular.noop	AngularJS"
+			],
+			[
+				"ng",
+				"ng-pluralize	AngularJS"
+			],
+			[
+				"da",
+				"display"
+			],
+			[
+				"ng-re",
+				"ng-repeat	AngularJS"
+			],
+			[
+				"eve",
+				"event"
+			],
+			[
+				"l",
+				"log"
+			],
+			[
+				"even",
+				"events"
+			],
+			[
+				"t",
+				"text"
+			],
+			[
+				"in",
+				"input	Tag"
+			],
+			[
+				"le",
+				"letter-spacing"
+			],
+			[
+				"o",
+				"overflow"
+			],
+			[
+				"ma",
+				"margin"
+			],
+			[
+				"fo",
+				"font-size"
+			],
+			[
+				"li",
+				"link	Tag"
+			],
+			[
+				"di",
+				"display"
+			],
+			[
+				"m",
+				"meta	Tag"
+			],
+			[
+				"marg",
+				"margin"
+			],
+			[
+				"bo",
+				"border"
+			],
+			[
+				"cl",
+				"clear"
+			],
+			[
+				"margin",
+				"margin-top"
+			],
+			[
+				"ff",
+				"FFFFFF"
+			],
+			[
+				"event",
+				"eventIndex"
+			],
+			[
+				"su",
+				"signUpFor"
+			],
+			[
+				"h",
+				"h3"
+			],
+			[
+				"for",
+				"for	for (…) {…}"
+			],
+			[
+				"ev",
+				"event"
+			],
+			[
+				"a",
+				"angular"
+			],
+			[
+				"toBe",
+				"toBeTruthy"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"ans",
+				"answerToLife"
+			],
+			[
+				"to",
+				"toBe"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "MD-Leadership.sublime-project",
+			"settings":
+			{
+				"buffer_size": 47,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 332.0,
+		"selected_items":
+		[
+			[
+				"pack",
+				"Package Control: Remove Package"
+			],
+			[
+				"pakc",
+				"Package Control: Install Package"
+			],
+			[
+				"pa",
+				"Package Control: Install Package"
+			],
+			[
+				"js",
+				"JSHint"
+			],
+			[
+				"jsh",
+				"JSHint"
+			],
+			[
+				"grun",
+				"Build: Gruntfile"
+			],
+			[
+				"",
+				"Build: Gruntfile"
+			],
+			[
+				"pac",
+				"Package Control: Install Package"
+			],
+			[
+				"pak",
+				"Package Control: Install Package"
+			],
+			[
+				"jshin",
+				"JSHint"
+			],
+			[
+				"jshi",
+				"JSHint: Set Linting Preferences"
+			],
+			[
+				"jshu",
+				"JSHint: Set Plugin Options"
+			],
+			[
+				"packaga",
+				"Package Control: Install Package"
+			],
+			[
+				"in",
+				"Indentation: Convert to Tabs"
+			]
+		],
+		"width": 400.0
+	},
+	"console":
+	{
+		"height": 200.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/F/Owners/Brian/git/MD-Leadership/MD-Leadership.sublime-project",
+		"/F/Owners/Brian/git/MD-Leadership/client/src/app/app.js",
+		"/F/Owners/Brian/git/MD-Leadership/client/src/app/home/home.js",
+		"/F/Owners/Brian/git/MD-Leadership/client/src/app/home/home.tpl.html",
+		"/F/Owners/Brian/git/MD-Leadership/client/src/index.html",
+		"/F/Owners/Brian/git/MD-Leadership/client/Gruntfile.js",
+		"/F/Owners/Brian/git/MD-Leadership/client/bower.json",
+		"/F/Owners/Brian/git/MD-Leadership/client/src/app/about/about.js",
+		"/F/Owners/Brian/git/MD-Leadership/client/vendor/angular/angular-route.js",
+		"/F/Owners/Brian/git/MD-Leadership/client/build.config.js",
+		"/F/Owners/Brian/git/MD-Leadership/client/vendor/angular/angular-loader.js",
+		"/F/Owners/Brian/git/MD-Leadership/client/src/app/contact/contact.tpl.html",
+		"/F/Owners/Brian/git/MD-Leadership/client/src/app/app.spec.js",
+		"/F/Owners/Brian/git/MD-Leadership/client/src/app/home/home.spec.js",
+		"/F/Owners/Brian/git/MD-Leadership/client/src/app/home/home.less",
+		"/F/Owners/Brian/git/MD-Leadership/api/composer.lock",
+		"/F/Owners/Brian/git/angular-app/server/cert/privatekey.pem",
+		"/F/Owners/Brian/git/angular-app/server/cert/certrequest.csr",
+		"/F/Owners/Brian/git/angular-app/server/cert/certificate.pem",
+		"/C/wamp/bin/php/php5.4.16/php-cli.ini",
+		"/C/wamp/bin/php/php5.4.16/php.ini-production",
+		"/F/Owners/Brian/workspace/AngularLearning/application/scripts/angular-resource.js",
+		"/F/Owners/Brian/git/MD-Leadership/api/composer.json",
+		"/C/wamp/wampmanager.ini",
+		"/C/wamp/bin/php/php5.4.16/phpForApache.ini",
+		"/F/Owners/Brian/git/MD-Leadership/client/src/app/events/events.tpl.html",
+		"/F/Owners/Brian/git/MD-Leadership/client/src/app/about/about.tpl.html",
+		"/F/Owners/Brian/git/MD-Leadership/client/src/app/account/account.tpl.html",
+		"/F/Owners/Brian/workspace/AngularLearning/application/scripts/leadershipMockup.js",
+		"/C/Documents and Settings/zhy/Application Data/Mozilla/Firefox/Profiles/42fhslh4.default/prefs.js",
+		"/F/Owners/Brian/git/MD-Leadership/client/src/template.html",
+		"/F/Owners/Brian/git/MD-Leadership/.jshintrc",
+		"/F/Owners/Brian/git/angular-app/client/src/common/resources/users.js",
+		"/F/Owners/Brian/git/MD-Leadership/client/node_modules/grunt-karma/tasks/grunt-karma.js",
+		"/F/Owners/Brian/workspace/AngularLearning/application/Foo.js",
+		"/C/Documents and Settings/zhy/Application Data/npm/node_modules/generator-angular/package.json",
+		"/F/Owners/Sublime Text 2.0.2/Data/Packages/JSHint Gutter/JSHint.sublime-settings",
+		"/F/Owners/Sublime Text 2.0.2/Data/Packages/JSHint Gutter/.jshintrc",
+		"/F/Owners/Brian/git/angular.js/src/ngResource/resource.js",
+		"/F/Owners/Brian/git/MD-Leadership/client/node_modules/karma/lib/config.js",
+		"/F/Owners/Brian/git/MD-Leadership/client/node_modules/grunt-karma/lib/background.js",
+		"/F/Owners/Brian/git/MD-Leadership/client/node_modules/grunt/lib/grunt.js",
+		"/F/Owners/Brian/git/MD-Leadership/client/node_modules/karma/lib/runner.js",
+		"/F/Owners/Brian/git/MD-Leadership/client/node_modules/karma/thesis.pdf",
+		"/F/Owners/Brian/git/MD-Leadership/client/karma/karma-unit.tpl.js",
+		"/F/Owners/Brian/git/MD-Leadership/client/package.json",
+		"/F/Owners/Brian/git/MD-Leadership/client/node_modules/karma-firefox-launcher/package.json",
+		"/F/Owners/Brian/git/MD-Leadership/client/npm-debug.log",
+		"/F/Owners/Brian/git/MD-Leadership/client/node_modules/karma/package.json",
+		"/F/Owners/Brian/git/MD-Leadership/client/.bowerrc",
+		"/F/Owners/Brian/git/MD-Leadership/client/.gitignore",
+		"/F/Owners/Brian/git/MD-Leadership/client/vendor/bootstrap/less/variables.less",
+		"/F/Owners/Brian/web_projects/leadership/Gruntfile.js",
+		"/F/Owners/Brian/git/MD-Leadership/client/src/less/main.less",
+		"/F/Owners/Brian/git/MD-Leadership/client/.gitmodules",
+		"/F/Owners/Brian/git/MD-Leadership/client/vendor/bootstrap/index.html",
+		"/F/Owners/Brian/git/MD-Leadership/client/vendor/bootstrap/_layouts/customize.html",
+		"/F/Owners/Brian/git/MD-Leadership/client/vendor/bootstrap/less/grid.less",
+		"/F/Owners/Brian/git/MD-Leadership/client/vendor/bootstrap/less/media.less",
+		"/F/Owners/Brian/git/MD-Leadership/client/vendor/bootstrap/less/buttons.less",
+		"/F/Owners/Brian/git/MD-Leadership/client/build/index.html",
+		"/F/Owners/Brian/git/MD-Leadership/.project",
+		"/F/Owners/Brian/git/MD-Leadership/.buildpath",
+		"/F/Owners/Brian/git/MD-Leadership/client/README.md",
+		"/F/Owners/Brian/git/MD-Leadership/client/.travis.yml",
+		"/F/Owners/Brian/git/MD-Leadership/client/vendor/angular-latest/Gruntfile.js",
+		"/F/Owners/Brian/git/MD-Leadership/client/vendor/bootstrap/package.json",
+		"/F/Owners/Brian/git/MD-Leadership/client/vendor/angular-latest/README.md",
+		"/F/Owners/Brian/git/MD-Leadership/client/vendor/angular-latest/src/Angular.js",
+		"/F/Owners/Brian/git/MD-Leadership/client/vendor/bootstrap/less/mixins.less",
+		"/F/Owners/Brian/web_projects/leadership/karma.conf.js",
+		"/F/Owners/Brian/git/MD-Leadership/client/src/less/variables.less",
+		"/F/Owners/Brian/git/MD-Leadership/client/vendor/angular-bootstrap/ui-bootstrap-tpls.js",
+		"/F/Owners/Brian/git/MD-Leadership/client/src/app/home/home.html",
+		"/F/Owners/Brian/git/MD-Leadership/client/vendor/bootstrap/less/forms.less",
+		"/F/Owners/Brian/git/MD-Leadership/client/vendor/bootstrap/less/tables.less",
+		"/F/Owners/Brian/git/MD-Leadership/client/vendor/bootstrap/less/tooltip.less",
+		"/F/Owners/Brian/git/MD-Leadership/client/vendor/bootstrap/less/wells.less",
+		"/F/Owners/Brian/git/MD-Leadership/client/vendor/bootstrap/less/jumbotron.less",
+		"/F/Owners/Sublime Text 2.0.2/Data/Packages/sublime-grunt-build/grunt.sublime-build",
+		"/F/Owners/Sublime Text 2.0.2/Data/Packages/User/Preferences.sublime-settings",
+		"/F/Owners/Sublime Text 2.0.2/Data/Packages/Default/Preferences.sublime-settings",
+		"/F/Owners/Brian/git/angular-app/client/gruntFile.js",
+		"/F/Owners/Brian/git/MD-Leadership/client/[36mCompleted in 18.579s at Tue Jul 30 2013 09",
+		"/F/Owners/Sublime Text 2.0.2/Data/Packages/sublime-grunt-build/grunt-build-on-save.py",
+		"/F/Owners/Sublime Text 2.0.2/Data/Packages/sublime-grunt-build/README.md",
+		"/F/Owners/Sublime Text 2.0.2/Data/Packages/sublime-grunt-build/Gruntfile.js",
+		"/F/Owners/Sublime Text 2.0.2/Data/Packages/sublime-grunt-build/package.json",
+		"/F/Owners/Sublime Text 2.0.2/Data/Packages/User/untitled.sublime-build",
+		"/F/Owners/Brian/git/MD-Leadership/client/node_modules/grunt-karma/package.json",
+		"/F/Owners/Brian/git/MD-Leadership/client/node_modules/grunt-karma/node_modules/karma/package.json",
+		"/F/Owners/Brian/git/MD-Leadership/client/node_modules/grunt-karma/Gruntfile.js",
+		"/F/Owners/Brian/git/MD-Leadership/client/build/karma-unit.js",
+		"/F/Owners/Brian/workspace/AngularLearning/karma.conf.js",
+		"/F/Owners/Brian/git/MD-Leadership/client/src/app/home/README.md",
+		"/F/Owners/phantomjs-1.9.1-windows/examples/printenv.js",
+		"/C/Documents and Settings/zhy/Desktop/karma.conf.js",
+		"/C/Documents and Settings/zhy/Desktop/build.config.js",
+		"/F/Owners/Brian/git/MD-Leadership/client/LICENSE",
+		"/F/Owners/Brian/git/MD-Leadership/client/vendor/angular-bootstrap/ui-bootstrap-tpls.min.js",
+		"/F/Owners/Brian/workspace/AngularLearning/spikes/resource/scripts/angular-mocks.js",
+		"/F/Owners/Brian/git/MD-Leadership/client/vendor/angular-mocks/angular-mocks.js",
+		"/F/Owners/Brian/git/MD-Leadership/client/vendor/angular-mocks/.bower.json",
+		"/F/Owners/Brian/git/MD-Leadership/client/src/.htaccess",
+		"/F/Owners/Brian/git/angular-app/client/src/common/directives/crud/crud.js",
+		"/F/Owners/Brian/git/angular-app/client/src/common/directives/crud/crudButtons.js",
+		"/F/Owners/Brian/git/angular-app/client/src/common/directives/crud/edit.js",
+		"/F/Owners/Brian/git/angular-app/server/server.js",
+		"/C/Documents and Settings/zhy/Application Data/npm/node_modules/generator-angular/util.js",
+		"/C/Documents and Settings/zhy/Application Data/npm/node_modules/generator-angular/Gruntfile.js",
+		"/F/Owners/Brian/git/MD-Leadership/client/gruntFile.js",
+		"/F/Owners/Brian/git/angular-app/client/package.json",
+		"/F/Owners/Brian/git/MD-Leadership/client/src/lib/auth/auth.js",
+		"/F/Owners/Brian/git/MD-Leadership/client/src/app/events/events.html",
+		"/F/Owners/Brian/git/angular-ui_bootstrap/Gruntfile.js",
+		"/F/Owners/Brian/web_projects/leadership/bower.json",
+		"/F/Owners/Brian/web_projects/leadership/.travis.yml",
+		"/F/Owners/Brian/git/angular-app/server/config.js",
+		"/F/Owners/Brian/git/angular-app/client/src/app/app.js",
+		"/F/Owners/Brian/git/angular-app/server/gruntFile.js",
+		"/F/Owners/Brian/git/angular-app/server/package.json",
+		"/F/Owners/Brian/git/angular-app/client/test/config/unit.js",
+		"/F/Owners/Brian/git/angular-app/client/dist/angular-app.js",
+		"/F/Owners/Brian/git/angular-app/client/dist/templates/common.js",
+		"/F/Owners/Brian/git/angular-app/client/dist/templates/app.js",
+		"/F/Owners/Brian/git/angular-app/client/dist/index.html",
+		"/F/Owners/Brian/git/angular-app/client/test/unit/app/admin/projects/admin-projectsSpec.js",
+		"/F/Owners/Brian/git/MD-Leadership/client/test/config/karma-unit.conf.js"
+	],
+	"find":
+	{
+		"height": 36.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"userConfi",
+			"$LocationProvider",
+			"$location",
+			"scripts",
+			"'",
+			"  ",
+			"'",
+			"'\n",
+			"\"\"\n",
+			"	\"\"",
+			"util",
+			"loading conf",
+			"data",
+			"options",
+			"this.options",
+			"navbar",
+			"div",
+			">\n",
+			"build",
+			"        \n",
+			"alert",
+			"type",
+			"directive",
+			"alert",
+			"ui.bootstrap.alert",
+			"$httpBackend",
+			"ctrl+alt+",
+			"index",
+			"ctrl+l",
+			">",
+			"<",
+			"75em",
+			"				\n",
+			".main",
+			"z-",
+			".content",
+			";\n",
+			"content",
+			"div",
+			"			"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"\"",
+			"    ",
+			"\"",
+			"&ft;",
+			"&lt;"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "MD-Leadership.sublime-project",
+					"settings":
+					{
+						"buffer_size": 47,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								47,
+								47
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 36.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 130.0
+	},
+	"replace":
+	{
+		"height": 66.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"",
+				"client/src/app/app.js"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"",
+				"/F/Owners/Brian/sublime_workspace/AngularLearning.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 251.0,
+	"status_bar_visible": true
+}
