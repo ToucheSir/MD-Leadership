@@ -23,10 +23,10 @@ angular.module("MDLeadership.home", [
  * this way makes each module more "self-contained".
  */
 .config(function config($routeProvider) {
-	$routeProvider.when("/home", {
-		controller: "HomeCtrl",
-		templateUrl: "home/home.tpl.html"
-	});
+    $routeProvider.when("/home", {
+        controller: "HomeCtrl",
+        templateUrl: "home/home.tpl.html"
+    });
 })
 
 /**
@@ -35,7 +35,7 @@ angular.module("MDLeadership.home", [
 .controller("HomeCtrl", function HomeCtrl($scope, titleService) {
 	titleService.setTitle("Home");
 
-	$scope.user = {
+	$scope.currentUser = {
 		name: "Bob"
 	};
 });
