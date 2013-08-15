@@ -4,5 +4,5 @@ build/
 bin/
 node_modules/
 vendor/
-*.sublime*
+*.sublime-*
 test-results.xml
