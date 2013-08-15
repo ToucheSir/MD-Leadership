@@ -23,7 +23,7 @@ module.exports = function ( grunt ) {
   /**
    * Load in our build configuration file.
    */
-  var userConfig = require( './build.config.js' );
+  var userConfig = require('./build.config.js');
 
   /**
    * This is the configuration object Grunt uses to give each plugin its 
@@ -340,10 +340,12 @@ module.exports = function ( grunt ) {
         configFile: '<%= build_dir %>/karma-unit.js'
       },
       unit: {
-        runnerPort: 9101,
-        background: true
+        background: true,
+        port: 9877
+        // browsers: ['Firefox']
       },
       continuous: {
+        background: false,
         singleRun: true
       }
     },

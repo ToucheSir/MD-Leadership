@@ -49,11 +49,13 @@ module.exports = {
    */
   vendor_files: {
     js: [
-      'vendor/angular/unstable/angular.js',
+      'vendor/angular/angular.js',
+      'vendor/angular/angular-route.js',
       'vendor/angular-bootstrap/ui-bootstrap-tpls.min.js',
-      'vendor/angular-mocks/unstable/angular-mocks.js',
-      'vendor/angular-resource/unstable/angular-resource.js',
-      'vendor/angular-cookies/unstable/angular-cookies.js',
+      'vendor/angular/angular-mocks.js',
+      'vendor/angular/angular-resource.js',
+      'vendor/angular/angular-cookies.js',
+      'vendor/angular/angular-touch.js',
       'vendor/placeholders/angular-placeholders-0.0.1-SNAPSHOT.min.js',
       'vendor/angular-ui-router/release/angular-ui-router.js',
       'vendor/angular-ui-utils/modules/route/route.js'
