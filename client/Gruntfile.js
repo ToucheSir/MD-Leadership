@@ -342,7 +342,6 @@ module.exports = function ( grunt ) {
       unit: {
         background: true,
         port: 9877
-        // browsers: ['Firefox']
       },
       continuous: {
         background: false,

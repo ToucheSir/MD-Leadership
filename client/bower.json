@@ -2,15 +2,20 @@
   "name": "MD-Leadership",
   "version": "0.0.1",
   "devDependencies": {
-    "angular": "PatternConsulting/bower-angular#v1.2.0rc1",
+    "angular": "~1.2.0rc1",
+    "angular-animate": "~1.2.0rc1",
+    "angular-cookies": "~1.2.0rc1",
+    "angular-loader": "~1.2.0rc1",
+    "angular-mocks": "~1.2.0rc1",
+    "angular-resource": "~1.2.0rc1",
+    "angular-route": "~1.2.0rc1",
+    "angular-sanitize": "~1.2.0rc1",
+    "angular-scenario": "~1.2.0rc1",
+    "angular-touch": "~1.2.0rc1",
     "bootstrap": "~3.0.0",
     "angular-bootstrap": "~0.5.0",
     "angular-ui-router": "~0.0.1",
     "angular-ui-utils": "~0.0.3"
-  },
-  "dependencies": {},
-  "resolutions": {
-    "angular": "v1.2.0rc1"
   },
   "dependencies": {}
 }

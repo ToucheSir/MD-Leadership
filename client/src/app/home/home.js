@@ -14,7 +14,10 @@
  */
 angular.module("MDLeadership.home", [
 	"ngRoute",
-	"titleService"
+	"ngAnimate",
+	"titleService",
+	"eventResource",
+	"ui.bootstrap"
 ])
 
 /**
@@ -32,11 +35,24 @@ angular.module("MDLeadership.home", [
 /**
  * And of course we define a controller for our route.
  */
-.controller("HomeCtrl", function HomeCtrl($scope, titleService) {
+.controller("HomeCtrl", function HomeCtrl($scope, titleService, Event) {
 	titleService.setTitle("Home");
 
 	$scope.currentUser = {
 		name: "Bob"
 	};
-});
 
+	$scope.recentEvents = Event.query();
+
+	$scope.showPanel = false;
+	$scope.selectedEvent = {};
+
+	$scope.viewEvent = function(event) {
+		$scope.selectedEvent.editing = false;
+		$scope.selectedEvent = event;
+		$scope.showPanel = true;
+	};
+
+
+
+});

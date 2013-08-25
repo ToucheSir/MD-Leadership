@@ -1,31 +1,53 @@
 <div class="row">
-    <div class="col col-lg-12">
-        <div class="jumbotron">
-            <h1>Hello, {{ user.name }}!</h1>
-            <p>...</p><a class="btn btn-primary btn-large">Learn more</a>
-        </div>
-    </div>
+	<div class="container">
+		<div class="jumbotron">
+			<h1>Hello, {{ currentUser.name }}!</h1>
+			<p>...</p>
+			<a class="btn btn-primary btn-lg">Learn more</a>
+		</div>
+	</div>
 </div>
 <div class="row">
-    <div class="col col-lg-4">
-        <h2>Heading</h2>
-        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus
-            ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo
-            sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed
-            odio dui.</p><a class="btn btn-primary" href="#">View details </a>
-    </div>
-    <div class="col col-lg-4">
-        <h2>Heading</h2>
-        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus
-            ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo
-            sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed
-            odio dui.</p><a class="btn btn-primary" href="#">View details</a>
-    </div>
-    <div class="col col-lg-4">
-        <h2>Heading</h2>
-        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus
-            ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo
-            sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed
-            odio dui.</p><a class="btn btn-primary" href="#">View details </a>
-    </div>
+	<div class="col col-md-6 pull-right event-panel" ng-show="showPanel">
+		<div class="pull-left">
+			<h3>{{selectedEvent.name}}</h3>
+
+			<i>By</i> <span class="label label-default">{{selectedEvent.creator}}</span>
+
+			<p>{{selectedEvent.description}}</p>
+		</div>
+
+		<div class="col col-md-6">
+			<input 
+			type="text" 
+			class="form-control" 
+			datepicker-popup="dd-MMMM-yyyy" 
+			ng-model="dt" 
+			open="opened" 
+			min="minDate" 
+			max="'2015-06-22'" 
+			datepicker-options="dateOptions" 
+			date-disabled="disabled(date, mode)" 
+			ng-required="true"
+			/>			
+		</div>
+	</div>
+
+	<div class="pull-left list-group col" ng-class="{'col-md-6': showPanel}">
+		<a ng-repeat="event in recentEvents" class="list-group-item">
+			<h3 class="list-group-item-heading">
+				{{event.name}}
+			</h3>
+
+			<p class="list-group-item-text blurb">
+				Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus
+				ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo
+				sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed
+				odio dui.
+			</p>
+			<button class="btn btn-primary" ng-click="viewEvent(event)"> 
+				View details 
+			</button>
+		</a>
+	</div>
 </div>

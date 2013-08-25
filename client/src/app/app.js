@@ -3,11 +3,13 @@ angular.module("MDLeadership", [
 	"templates-app",
 	"templates-common",
 	"MDLeadership.home",
-	"MDLeadership.about"
+	"MDLeadership.about",
+	"MDLeadership.events",
+	"titleService"
 ])
 
 .config(function myAppConfig($routeProvider) {
-	$routeProvider.otherwise("/home");
+	$routeProvider.otherwise({ redirectTo: "/home"});
 })
 
 .run(function run(titleService) {
@@ -15,4 +17,5 @@ angular.module("MDLeadership", [
 })
 
 .controller("AppCtrl", function AppCtrl($scope, $location) {
+	
 });
