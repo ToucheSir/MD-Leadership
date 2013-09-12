@@ -1,26 +1,23 @@
 <!DOCTYPE html>
-<html ng-app="MDLeadership">
+<html ng-app="MDLeadership" data-ng-controller="AppCtrl">
 	<head>
 		<title>MD-Leadership</title>
 
 		<meta charset="utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
-
-		<!-- font awesome from BootstrapCDN -->
-		<link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="Events and Signups, yo.">
+		<meta name="author" content="The Hon. Brian Chen">
+		<link rel="shortcut icon" href="assets/images/favicon.png">
 
 		<!-- compiled CSS -->
 		<% styles.forEach( function ( file ) { %>
 			<link rel="stylesheet" type="text/css" href="<%= file %>" />
 		<% }); %>
 
-		<!--[if IE 7>
-			<link rel="stylesheet" href="assets/font-awesome-ie7.min.css />
-		<![endif]-->
-
 		<!--[if lt IE 9]>
 			<script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js"></script>
+			<script src="http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.2.0/respond.js></script>
 		<![endif]-->
 
 		<!-- compiled JS -->
@@ -30,33 +27,83 @@
 
 	</head>
 	<body>
-		<header class="header">
-			<div class="container">
-				<a href="#/home">MD Leadership</a>
-				<a href="#/home">Home</a>
-				<a href="#/events">events</a>
-				<a href="#/calendars">calendars</a>
-				<a href="#/account">account</a>
-				<a href="#/contact">contact</a>    
-			</div>	
-		</header>
+		<div id="wrap">
+			<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#/home">
+						MD Leadership
+						<img src="assets/images/snake.gif" data-ng-show="allResolved()"/>
+					</a>
+				</div>
 
-		<!--[if lte IE 8]>
-			<div style='clear: both; height: 112px; padding:0; position: relative;'>
-				<a href="http://www.theie8countdown.com/ie-users-info">
-					<img src="http://www.theie8countdown.com/assets/badge_iecountdown.png" border="0" height="112" width="348" alt="" />
-				</a>
+				<div class="navbar-collapse collapse in">
+					<ul class="nav navbar-nav">
+						<li data-ng-class="{active: tabActive('Home')}">
+							<a href="#/home">Home</a>
+						</li>
+						<li data-ng-class="{active: tabActive('Events')}">
+							<a href="#/events">Events</a>
+						</li>
+						<li data-ng-class="{active: tabActive('Calendars')}">
+							<a href="#/calendars">Calendars</a>
+						</li>
+					</ul>
+
+					<ul class="nav navbar-nav navbar-right">
+
+						<li data-ng-class="{active: tabActive('Account')}">
+							<a href="#/account">Account</a>
+						</li>
+						<li data-ng-class="{active: tabActive('Contact')}">
+							<a href="#/contact">Contact</a>
+						</li>
+						<li class="dropdown" data-ng-class="{active: tabActive('Admin')}">
+							<a href="#/Admin" class="dropdown-toggle" data-toggle="dropdown">Admin<b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li>
+									<a href="#/Admin/users">Manage Users</a>
+								</li>
+								<li>
+									<a href="#/Admin/events">Manage Events</a>
+								</li>
+								<li class="divider"></li>
+								<li>
+									<a href="#/Admin">Admin Console</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
 			</div>
-		<![endif]-->
-		
-		<div data-ng-view="">
-			<strong>You be seeing 'dis 'cuz you ain't got JS enabled.</strong>
+
+			<!--[if lte IE 8]>
+				<div style='clear: both; height: 112px; padding:0; position: relative;'>
+					<a href="http://www.theie8countdown.com/ie-users-info">
+						<img src="http://www.theie8countdown.com/assets/badge_iecountdown.png" border="0" height="112" width="348" alt="" />
+					</a>
+				</div>
+			<![endif]-->
+
+			<div data-ng-view="" class="view-container">
+				<strong>
+					You be seeing 'dis 'cuz you ain't got JS enabled.
+				</strong>
+			</div>
 		</div>
 
-		<footer class="footer">
-			<a href="#/about">&copy; 2013 Garrett McDonald, Tahna Kabir and Brian Chen</a>
-		</footer>
+		<div id="footer">
+			<div class="container">
+				<p class="copyright">
+					<a href="#/about">
+						&copy; 2013 Garrett McDonald, Tahna Kabir and Brian Chen
+					</a>
+				</p>
+			</div>
+		</div>
 	</body>
 </html>
-
-

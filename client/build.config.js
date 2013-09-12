@@ -22,7 +22,7 @@ module.exports = {
   app_files: {
     js: [ 'src/**/*.js', '!src/**/*.spec.js' ],
     jsunit: [ 'src/**/*.spec.js' ],
-    
+
     coffee: [ 'src/**/*.coffee', '!src/**/*.spec.coffee' ],
     coffeeunit: [ 'src/**/*.spec.coffee' ],
 
@@ -51,12 +51,12 @@ module.exports = {
     js: [
       'vendor/angular/angular.js',
       'vendor/angular-route/angular-route.js',
-      'vendor/angular-bootstrap/ui-bootstrap-tpls.min.js',
-      'vendor/angular-mocks/angular-mocks.js',
+      // 'vendor/angular-bootstrap/ui-bootstrap-tpls.min.js',
+      // 'vendor/angular-mocks/angular-mocks.js',
       'vendor/angular-resource/angular-resource.js',
       'vendor/angular-cookies/angular-cookies.js',
-      'vendor/angular-animate/angular-animate.js',
-      'vendor/angular-touch/angular-touch.js',
+      // 'vendor/angular-animate/angular-animate.js',
+      // 'vendor/angular-touch/angular-touch.js',
       'vendor/placeholders/angular-placeholders-0.0.1-SNAPSHOT.min.js',
     ],
     css: [

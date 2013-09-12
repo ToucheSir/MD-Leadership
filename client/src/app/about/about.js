@@ -5,14 +5,14 @@ angular.module("MDLeadership.about", [
 	"titleService"
 ])
 
-.config(function config($routeProvider) {
+.config(function($routeProvider) {
 	$routeProvider.when("/about", {
 		controller: "AboutCtrl",
 		templateUrl: "about/about.tpl.html"
 	});
 })
 
-.controller("AboutCtrl", function AboutCtrl($scope, titleService) {
+.controller("AboutCtrl", function($scope, titleService) {
 	titleService.setTitle("About");
 	
 	// This is simple a demo for UI Boostrap.

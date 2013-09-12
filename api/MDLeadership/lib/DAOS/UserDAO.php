@@ -34,9 +34,9 @@ class UserDAO {
 
 	public function addUser(User $user) {
 		if($this->hasUser($user) < 0) {
-			array_push($this->users, $user);
+			$this->users[] = $user;
 			$this->updateUsers();
-		}
+		} // if
 	} // addUser
 
 	public function removeUser(User $user) {
@@ -62,7 +62,7 @@ class UserDAO {
 		});
 
 		if($userIndex >= 0) {
-			$users[$userIndex] = $user;
+			$this->users[$userIndex] = $user;
 			$this->updateUsers();
 		} else {
 			throw new \Exception("user not found");
@@ -73,7 +73,7 @@ class UserDAO {
 
 		if($customCallback) {
 			return $customCallback($this->users, $user);
-		}
+		} // if
 
 		$result = array_search($user, $this->users);
 

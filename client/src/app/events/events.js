@@ -1,42 +1,47 @@
 angular.module("MDLeadership.events", [
 	"ngRoute",
-	"ngAnimate",
 	"titleService",
 	"eventResource",
 	"userResource",
-	"ui.bootstrap"
+	"ui.bootstrap",
+	"eventsDisplay"
 ])
 
-.config(function config($routeProvider) {
-    $routeProvider.when("/events", {
-        controller: "EventsCtrl",
-        templateUrl: "events/events.tpl.html"
-    });
+.config(function($routeProvider) {
+	$routeProvider.when("/events", {
+		controller: "EventsCtrl",
+		templateUrl: "events/events.tpl.html"
+	}).when("/events/:eventID", {
+		controller: "SingleEventCtrl",
+		templateUrl: "events/singleEvent.tpl.html",
+		resolve: {
+			singleEvent: function($route, Event) {
+				var event = Event.getEvent({eventID: $route.current.params["eventID"]});
+				return event.$promise;
+			}
+		}
+	});
+})
+
+.controller("EventsCtrl", function(titleService) {
+	titleService.setTitle("Events");
 })
 
 /**
  * And of course we define a controller for our route.
  */
-.controller("EventsCtrl", function EventsCtrl($scope, titleService, Event, User) {
-	titleService.setTitle("Events");
+.controller("SingleEventCtrl", function($scope, $timeout, singleEvent, EventDialog) {
+	$scope.event = singleEvent;
 
-	$scope.currentUser = {
-		name: "Bob",
-		id: 123456
+	$scope.editingEvent = false;
+
+	$scope.openCalendar = function(calendarName) {
+		$timeout(function() {
+			$scope[calendarName] = true;
+		});
 	};
 
-	$scope.recentEvents = Event.query();
-	$scope.userEvents = User.getUserEvents({userID: 123456});
-	console.log($scope.userEvents);
-
-	$scope.showPanel = false;
-
-	$scope.selectedEvent = {};
-
-	$scope.viewEvent = function(event) {
-		$scope.selectedEvent.editing = false;
-		$scope.selectedEvent = event;
-		$scope.showPanel = true;
+	$scope.editEvent = function() {
+		EventDialog.editEvent(angular.copy($scope.event));
 	};
-
 });

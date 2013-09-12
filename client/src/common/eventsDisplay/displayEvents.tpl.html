@@ -1,0 +1,31 @@
+<div class="eventsDisplay" data-ng-controller="EventsDisplayCtrl">
+	<div class="row">
+		<h1>Events</h1>
+	</div>
+	<div class="row">
+		<button type="button" class="btn btn-primary" data-ng-click="createEvent()"> Create New Event
+		</button>
+	</div>
+	<div class="row events-container">
+		<div class="list-group all-events col-xs-12">
+			<a ng-repeat="event in events | limitTo:(eventProperties.limit || 100)" class="list-group-item" data-ng-href="#/events/{{ event.id }}">
+				<h3 class="list-group-item-heading">
+					{{ event.name }}
+				</h3>
+
+				<p class="list-group-item-text blurb">
+					{{ event.description }}
+				</p>
+
+				<div data-ng-show="event.maxUsers > 0">
+					<button class="btn btn-primary" data-ng-hide="event.attending" data-ng-click="attendEvent(event); $event.preventDefault()">
+						Sign Me Up!
+					</button>
+					<button class="btn btn-primary" data-ng-show="event.attending" data-ng-click="leaveEvent(event); $event.preventDefault()">
+						Leave Event
+					</button>
+				</div>
+			</a>
+		</div>
+	</div>
+</div>

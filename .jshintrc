@@ -11,7 +11,7 @@
     "expect": true,
     "inject": true,
   },
-  "globalstrict": false,
+  "strict": false,
   "quotmark": true,
   "smarttabs": true,
   "trailing": true,

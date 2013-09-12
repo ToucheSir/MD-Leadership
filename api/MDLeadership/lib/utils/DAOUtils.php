@@ -3,7 +3,7 @@
 namespace MDLeadership\lib\utils;
 
 class DAOUtils {
-	public static function serialize($obj, $filePath, $serializer=null, $writeMode="w") {
+	public static function serialize($data, $filePath, $serializer=null, $writeMode="w") {
 		if($serializer !== null) {
 			$serialized = array();
 			foreach ($data as $singleEntry) {

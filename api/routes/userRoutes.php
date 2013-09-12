@@ -1,5 +1,6 @@
 <?php
 use MDLeadership\lib\DAOS;
+use MDLeadership\lib\utils\JsonEncoder;
 
 use Slim\Slim;
 
@@ -26,7 +27,7 @@ $app->group("/users", function() use ($app) {
 		 * PUT user
 		 */
 		$app->put("/", "putUser");
-		
+
 		/**
 		 * DELETE user
 		 */
@@ -43,10 +44,6 @@ $app->group("/users", function() use ($app) {
 			 */
 			$app->get("/", "getUserEvents");
 
-			/**
-			 * POST user event
-			 */
-			// $app->post("/", "postUserEvent");
 
 			// user-event specific operations
 
@@ -58,12 +55,12 @@ $app->group("/users", function() use ($app) {
 			/**
 			 * PUT user event
 			 */
-			// $app->put("/:eventID", "putUserEvent");
+			$app->put("/:eventID", "putUserEvent");
 
 			/**
 			 * DELETE user event
 			 */
-			// $app->delete("/:eventID", "deleteUserEvent");
+			$app->delete("/:eventID", "deleteUserEvent");
 		});
 
 		/**
@@ -97,7 +94,7 @@ $app->group("/users", function() use ($app) {
 			/**
 			 * DELETE user group
 			 */
-			// $app->delete("/:eventID", "deleteUserGroup");				
+			// $app->delete("/:eventID", "deleteUserGroup");
 		});
 	});
 });
@@ -107,10 +104,13 @@ function getUsers() {
 	$users = $app->userDAO->getAllUsers();
 
 	$jsonedUsers = array_map(function($user) {
-		return $user->toJson();
+		$user = $user->toJson();
+		unset($user["password"]);
+
+		return $user;
 	}, $users);
 
-	echo ")]}',\n".json_encode($jsonedUsers);
+	echo JsonEncoder::encodeJson($jsonedUsers);
 }
 
 function getUser($userID) {
@@ -118,7 +118,7 @@ function getUser($userID) {
 
 	try {
 		$user = $app->userDAO->getUserByID($userID);
-		echo ")]}',\n".json_encode($user->toJson());
+		echo JsonEncoder::encodeJson($user->toJson());
 	} catch (Exception $e) {
 		$app->response->setStatus(404);
 	}
@@ -129,7 +129,8 @@ function putUser($userID) {
 	$userBody = $app->request->getBody();
 
 	try {
-		$app->$userDAO->updateUser($userBody);
+		$user = new User($userBody);
+		$app->$userDAO->updateUser($user);
 	} catch (Exception $e) {
 		$app->response->setStatus(404);
 	}
@@ -147,28 +148,31 @@ function deleteUser($userID) {
 }
 
 function getUserEvents($userID) {
-	$token = ")]}',\n";
 	$app = Slim::getInstance();
 
 	$eventIDs = $app->eventUserDAO->getUserEvents($userID);
+	$userEventJson = array("userID" => $userID, "eventIDs" => $eventIDs);
 
-	$jsonedEvents = array_map(function($eventID) use ($app) {
-		$fullEvent = $app->eventDAO->getEventByID($eventID);
-		return $fullEvent->toJson();
-	}, $eventIDs);
-
-	echo json_encode($jsonedEvents);
+	echo JsonEncoder::encodeJson($userEventJson);
 }
 
 function getUserEvent($userID, $eventID) {
 	$app = Slim::getInstance();
 
+	// TODO is this really needed?
+}
+
+function putUserEvent($userID, $eventID) {
+	$app = Slim::getInstance();
+
+	$app->eventUserDAO->addUserToEvent($userID, $eventID);
+}
+
+function deleteUserEvent($userID, $eventID) {
+	$app = Slim::getInstance();
+
 	try {
-		if($app->eventUserDAO->userInEvent($eventID, $userID) >= 0) {
-			$event = $app->eventDAO->getEventByID($eventID);
-		} else {
-			throw new \Exception("user not attending event");
-		}
+		$app->eventUserDAO->removeUserFromEvent($userID, $eventID);
 	} catch (Exception $e) {
 		$app->response->setStatus(404);
 	}

@@ -14,10 +14,11 @@
  */
 angular.module("MDLeadership.home", [
 	"ngRoute",
-	"ngAnimate",
+	"ui.bootstrap",
 	"titleService",
 	"eventResource",
-	"ui.bootstrap"
+	"userResource",
+	"eventsDisplay"
 ])
 
 /**
@@ -25,7 +26,7 @@ angular.module("MDLeadership.home", [
  * will handle ensuring they are all available at run-time, but splitting it
  * this way makes each module more "self-contained".
  */
-.config(function config($routeProvider) {
+.config(function($routeProvider) {
     $routeProvider.when("/home", {
         controller: "HomeCtrl",
         templateUrl: "home/home.tpl.html"
@@ -35,24 +36,11 @@ angular.module("MDLeadership.home", [
 /**
  * And of course we define a controller for our route.
  */
-.controller("HomeCtrl", function HomeCtrl($scope, titleService, Event) {
+.controller("HomeCtrl", function($scope, titleService, User, UserCredentials) {
 	titleService.setTitle("Home");
 
-	$scope.currentUser = {
-		name: "Bob"
-	};
+	$scope.currentUser = User.getUser({userID: UserCredentials.getID()});
 
-	$scope.recentEvents = Event.query();
-
-	$scope.showPanel = false;
-	$scope.selectedEvent = {};
-
-	$scope.viewEvent = function(event) {
-		$scope.selectedEvent.editing = false;
-		$scope.selectedEvent = event;
-		$scope.showPanel = true;
-	};
-
-
+	$scope.eventProperties = {limit: 7};
 
 });

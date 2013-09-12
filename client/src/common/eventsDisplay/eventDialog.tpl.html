@@ -1,0 +1,71 @@
+<div class="modal-header">
+	<h3>{{eventAction}}: {{dialogEvent.name}}</h3>
+</div>
+<div class="modal-body">
+	<form name="editEvent" class="form-horizontal">
+		<div class="form-group">
+			<label for="eventName">Name: </label>
+			<input type="text" name="eventName" class="form-control" data-ng-model="dialogEvent.name" data-ng-required="true" />
+		</div>
+
+		<div class="form-group">
+			<label for="startDate">Starts: </label>
+			<div class="input-group">
+				<input type="text" name="startDate" class="form-control" datepicker-popup="dd-MMMM-yyyy" data-ng-model="dialogEvent.timerange.start" is-open="startEdit"
+				min="minDate"
+				max="dialogEvent.timerange.end"
+				datepicker-options="dateOptions"
+				date-disabled="false"
+				data-ng-required="true"
+				/>
+
+				<span class="input-group-btn">
+					<button class="btn btn-info" ng-click="openCalendar('startEdit')">
+						<span class="glyphicon glyphicon-calendar"></span>
+					</button>
+				</span>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="endDate">Ends: </label>
+			<div class="input-group">
+
+				<input type="text" name="endDate" class="form-control" datepicker-popup="dd-MMMM-yyyy" data-ng-model="dialogEvent.timerange.end" is-open="endEdit"
+				min="dialogEvent.timerange.start"
+				max="'2015-06-22'"
+				datepicker-options="dateOptions"
+				date-disabled="disabled(date, mode)"
+				data-ng-required="true"
+				/>
+
+				<span class="input-group-btn">
+					<button class="btn btn-info" ng-click="openCalendar('endEdit')">
+						<span class="glyphicon glyphicon-calendar"></span>
+					</button>
+				</span>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="description">Description: </label>
+			<textarea name="description" class="form-control" rows="5" data-ng-model="dialogEvent.description">
+			</textarea>
+		</div>
+
+		<div class="form-group">
+			<label for="isPrivate">Private Event?: </label>
+			<input type="checkbox" name="isPrivate" data-ng-model="dialogEvent.isPrivate" />
+		</div>
+
+		<div class="form-group">
+			<label for="maxUsers">How many people can sign up?: </label>
+			<input type="number" name="maxUsers" class="form-control" data-ng-required="true" data-ng-model="dialogEvent.maxUsers" min="0" max="2000" />
+		</div>
+	</form>
+
+</div>
+<div class="modal-footer">
+	<button class="btn btn-primary" ng-click="saveEvent(dialogEvent)">Save</button>
+	<button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div>
