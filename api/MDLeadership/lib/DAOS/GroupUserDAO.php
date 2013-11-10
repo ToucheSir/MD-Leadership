@@ -6,8 +6,8 @@ require_once "DAOUtils.php";
 
 class GroupUserDAO {
 	const GROUP_USER_FILE_PATH = "../data/AllGroupUsers.json";
-	const COUNCIL_MEMBERS = 2048;
-	const ADMIN_MEMBERS = 1024;	
+	const COUNCIL_MEMBERS = 1024;
+	const ADMIN_MEMBERS = 2048;
 
 	private $allGroupUsers;
 
@@ -43,7 +43,7 @@ class GroupUserDAO {
 		DAOUtils::serialize($this->allGroupUsers, self::GROUP_USER_FILE_PATH);
 	} // updateGroupUsers
 
-	public function addUserToGroup($groupID, $userID) {
+	public function addUserToGroup($userID, $groupID) {
 		if($this->userInGroup($groupID, $userID) < 0) {
 			array_push($this->allGroupUsers,
 				array("userID" => intval($userID), "groupID" => intval($groupID)));
@@ -51,20 +51,20 @@ class GroupUserDAO {
 		} // if
 	} // addUserToGroup
 
-	public function removeUserFromGroup($groupID, $userID) {
+	public function removeUserFromGroup($userID, $groupID) {
 		$groupUserIndex = $this->userInGroup($groupID, $userID);
-		
+
 		if($groupUserIndex >= 0) {
 			array_splice($this->allGroupUsers, $groupUserIndex, 1);
 			$this->updateGroupUsers();
 		} // if
 	} // removeUserFromGroup
-	
-	public function userInGroup($groupID, $userID) {
+
+	public function userInGroup($userID, $groupID) {
 
 		for($i = 0; $i < count($this->allGroupUsers); $i++) {
 			$groupUser = $this->allGroupUsers[$i];
-				
+
 			if(intval($groupUser["userID"]) === intval($userID) &&
 			intval($groupUser["groupID"]) === intval($groupID)) {
 				return $i;

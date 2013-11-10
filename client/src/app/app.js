@@ -1,7 +1,9 @@
+/* jshint undef: false */
 angular.module("MDLeadership", [
 	"ngRoute",
 	"templates-app",
 	"templates-common",
+	"ui.bootstrap",
 	"authModules",
 	"titleService",
 	"MDLeadership.home",
@@ -17,13 +19,21 @@ angular.module("MDLeadership", [
 	.otherwise({ redirectTo: "/home" });
 })
 
-.run(function(titleService, $location) {
+.run(function($rootScope, $location, AccountService, titleService) {
+	var whiteListed = "/login";
+
+	/* jshint unused: false */
+	$rootScope.$on("$locationChangeStart", function(event, next, current) {
+		if ($location.path() !== whiteListed && !AccountService.isLoggedIn()) {
+			$location.path("/login");
+			return;
+		}
+	});
+
 	titleService.setSuffix(" | MD Leadership");
 })
 
 .controller("AppCtrl", function($scope, $http, titleService) {
-
-	$scope.currentUser = {name: "Bob", id: 123456};
 
 	$scope.allResolved = function() {
 		return $http.pendingRequests.length > 0;
@@ -34,18 +44,39 @@ angular.module("MDLeadership", [
 	};
 })
 
-.controller("LoginCtrl", function($scope, $location, UserCredentials, titleService, User) {
+.controller("LoginCtrl", function($scope, $location, titleService, AccountService) {
 	titleService.setTitle("Login");
 
-	$scope.login = function() {
-		UserCredentials.setCredentials($scope.userID, $scope.userPass);
 
-		var user = User.getUser({userID: $scope.userID});
-		user.$promise.then(function() {
+	$scope.login = function () {
+		var credentials = {
+			id: $scope.loginUser.id,
+			password: $scope.loginUser.pass
+		};
+
+		AccountService.login(credentials).then(function () {
 			$location.path("/home");
-		}, function() {
-			alert("Login Failed");
 		});
+	};
+
+	$scope.logout = function() {
+		AccountService.logout().then(function () {
+			$location.path("/login");
+		});
+	};
+
+	$scope.signup = function() {
+		if ($scope.signupForm.$invalid) {
+			$scope.signupForm.$dirty = true;
+		}
+	};
+
+	$scope.inputInvalid = function(element) {
+		return element.$invalid && element.$dirty;
+	};
+
+	$scope.getFormStyle = function(element) {
+		return $scope.inputInvalid(element) ? "has-error" : "";
 	};
 
 });

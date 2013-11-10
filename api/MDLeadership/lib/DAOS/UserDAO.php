@@ -21,10 +21,11 @@ class UserDAO {
 
 	public function getUserByID($userID) {
 		foreach ($this->users as $user) {
-			if((int)$user->id === (int)$userID) {
+			if ($user->get("id") === (int)$userID) {
 				return $user;
 			} // if
 		} // foreach
+
 		throw new \Exception("user does not exist");
 	} // getUserByID
 
@@ -33,55 +34,63 @@ class UserDAO {
 	} // getAllUsers
 
 	public function addUser(User $user) {
-		if($this->hasUser($user) < 0) {
+		$userIndex = $this->hasUser($user, array("id", "email"));
+
+		if ($userIndex < 0) {
 			$this->users[] = $user;
 			$this->updateUsers();
-		} // if
+		} else {
+			throw new \Exception("User conflict", 409);
+		} // else
 	} // addUser
 
 	public function removeUser(User $user) {
 		$userIndex = $this->hasUser($user);
 
-		if($userIndex >= 0) {
+		if ($userIndex >= 0) {
 			array_splice($this->users, $userIndex, 1);
 			$this->updateUsers();
 		} else {
-			throw new \Exception("user not found");
+			throw new \Exception("user not found", 404);
 		} // else
 	} // removeUser
 
 	public function updateUser(User $user) {
-		$userIndex = $this->hasUser($user, function($users, $user) {
-			for ($i=0; $i < count($users); $i++) { 
-				if((int)$users[$i]->id === (int)$user->id) {
-					return $i;
-				} // if
-			} // for
+		$userIndex = $this->hasUser($user, array("id"));
 
-			return -1;
-		});
-
-		if($userIndex >= 0) {
+		if ($userIndex >= 0) {
 			$this->users[$userIndex] = $user;
 			$this->updateUsers();
 		} else {
-			throw new \Exception("user not found");
+			throw new \Exception("user not found", 404);
 		} // else
 	} // updateUser
 
-	public function hasUser(User $user, $customCallback=false) {
+	public function hasUser(User $user, $matchAttrs=array()) {
+		$users = $this->users;
 
-		if($customCallback) {
-			return $customCallback($this->users, $user);
-		} // if
+		if (!empty($matchAttrs)) {
+			$userCount = count($users);
 
-		$result = array_search($user, $this->users);
+			for ($i=0; $i < $userCount; $i++) {
+				foreach ($matchAttrs as $attr) {
+					if ($users[$i]->get($attr) === $user->get($attr)) {
+						return $i;
+					} // if
+				} // foreach
+			} // for
+
+			return -1;
+		}
+
+		$result = array_search($user, $users);
 
 		return $result === false ? result : -1;
 	} // hasUser
 
 	private function updateUsers() {
-		DAOUtils::serialize($this->users, self::USER_FILE_PATH, function(User $user) {				
+		DAOUtils::serialize($this->users,
+				self::USER_FILE_PATH, function(User $user) {
 			return $user->toJson();
 		});
 	} // updateUsers

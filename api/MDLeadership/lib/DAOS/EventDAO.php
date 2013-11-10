@@ -20,12 +20,12 @@ class EventDAO {
 
 	public function getEventByID($eventID) {
 		foreach ($this->events as $event) {
-			if($event->id === $eventID) {
+			if ($event->get("id") === $eventID) {
 				return $event;
 			} // if
 		} // foreach
 
-		throw new \Exception("Event not found");
+		throw new \Exception("Event not found", 404);
 	} // getEventByID
 
 
@@ -34,7 +34,7 @@ class EventDAO {
 	} // getAllEvents
 
 	public function addEvent(Event $event) {
-		if($this->hasEvent($event) < 0) {
+		if ($this->hasEvent($event) < 0) {
 			$this->events[] = $event;
 			$this->updateEvents();
 		} else {
@@ -45,26 +45,18 @@ class EventDAO {
 	public function removeEvent(Event $event) {
 		$eventIndex = $this->hasEvent($event);
 
-		if($eventIndex >= 0) {
+		if ($eventIndex >= 0) {
 			array_splice($this->events, $eventIndex, 1);
 			$this->updateEvents();
 		} else {
-			throw new \Exception("event not found");
+			throw new \Exception("event not found", 404);
 		} // else
 	} // removeEvent
 
 	public function updateEvent(Event $event) {
-		$eventIndex = $this->hasEvent($event, function($events, $event) {
-			for ($i=0; $i < count($events); $i++) {
-				if($events[$i]->id === $event->id) {
-					return $i;
-				} // if
-			} // for
+		$eventIndex = $this->hasEvent($event, array("id"));
 
-			return -1;
-		});
-
-		if($eventIndex >= 0) {
+		if ($eventIndex >= 0) {
 			$this->events[$eventIndex] = $event;
 			$this->updateEvents();
 		} else {
@@ -72,10 +64,21 @@ class EventDAO {
 		} // else
 	} // updateEvent
 
-	public function hasEvent(Event $event, $customCallback=false) {
+	public function hasEvent(Event $event, $matchAttrs=array()) {
+		$events = $this->events;
 
-		if($customCallback) {
-			return $customCallback($this->events, $event);
+		if (!empty($matchAttrs)) {
+			$eventCount = count($events);
+
+			for ($i=0; $i < $eventCount; $i++) {
+				foreach ($matchAttrs as $attr) {
+					if ($events[$i]->get($attr) === $event->get($attr)) {
+						return $i;
+					} // if
+				} // foreach
+			} // for
+
+			return -1;
 		}
 
 		$result = array_search($event, $this->events);
@@ -84,7 +87,8 @@ class EventDAO {
 	} // hasEvent
 
 	private function updateEvents() {
-		DAOUtils::serialize($this->events, self::EVENT_FILE_PATH, function(Event $event) {
+		DAOUtils::serialize($this->events,
+				self::EVENT_FILE_PATH, function(Event $event) {
 			return $event->toJson();
 		});
 	} // updateEvents

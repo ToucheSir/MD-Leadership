@@ -1,14 +1,20 @@
 <?php
 use MDLeadership\lib\DAOS;
 use MDLeadership\lib\utils\JsonEncoder;
+use MDLeadership\lib\AuthRoles as Auth;
 
-use Slim\Slim;
+use Slim\Slim, Slim\Route;
 
 $app->userDAO = new DAOS\UserDAO();
 $app->eventUserDAO = new DAOS\EventUserDAO();
+/**
+ * [$app->eventDAO description]
+ * @var DAOS\EventDAO
+ */
 $app->eventDAO = new DAOS\EventDAO();
+$app->eventDAO->
 
-$app->group("/users", function() use ($app) {
+$app->group("/users", "assignRoles", function() use ($app) {
 	// global user operations
 
 	/**
@@ -99,6 +105,16 @@ $app->group("/users", function() use ($app) {
 	});
 });
 
+function assignRoles(Route $route) {
+	$app = Slim::getInstance();
+	$auth = new Auth;
+
+	if ($route->getParam("userID") === $app->currentUser->get("id")) {
+		// user is viewing self
+		$app->auth->addRole(Auth::VIEWING_SELF);
+	}
+}
+
 function getUsers() {
 	$app = Slim::getInstance();
 	$users = $app->userDAO->getAllUsers();
@@ -110,7 +126,7 @@ function getUsers() {
 		return $user;
 	}, $users);
 
-	echo JsonEncoder::encodeJson($jsonedUsers);
+	echo JsonEncoder::encode($jsonedUsers);
 }
 
 function getUser($userID) {
@@ -118,7 +134,7 @@ function getUser($userID) {
 
 	try {
 		$user = $app->userDAO->getUserByID($userID);
-		echo JsonEncoder::encodeJson($user->toJson());
+		echo JsonEncoder::encode($user->toJson());
 	} catch (Exception $e) {
 		$app->response->setStatus(404);
 	}
@@ -129,6 +145,7 @@ function putUser($userID) {
 	$userBody = $app->request->getBody();
 
 	try {
+		$user = $app->userDAO->getUserByID($userBody["id"]);
 		$user = new User($userBody);
 		$app->$userDAO->updateUser($user);
 	} catch (Exception $e) {
@@ -153,7 +170,7 @@ function getUserEvents($userID) {
 	$eventIDs = $app->eventUserDAO->getUserEvents($userID);
 	$userEventJson = array("userID" => $userID, "eventIDs" => $eventIDs);
 
-	echo JsonEncoder::encodeJson($userEventJson);
+	echo JsonEncoder::encode($userEventJson);
 }
 
 function getUserEvent($userID, $eventID) {

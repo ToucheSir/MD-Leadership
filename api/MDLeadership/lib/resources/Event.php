@@ -2,56 +2,45 @@
 
 namespace MDLeadership\lib\resources;
 
-use MDLeadership\jsonSerializable;
-
-class Event implements jsonSerializable {
+class Event extends JsonableResource {
 	const NO_USER_LIMIT = -1; // if no limit set
-	
+
 	private static $allowedAttributes = array(
-		"id", 
-		"creator", 
-		"name", 
-		"description", 
+		"id",
+		"creator",
+		"name",
+		"description",
 		"timerange",
 		"location",
 		"isPrivate",
 		"maxUsers"
 	);
 
-	private $data;
+	function sanitizeAttributes($attributes) {
+		$timeNow = new \DateTime();
+		$timeNowISO = $timeNow->format("Y-m-dTH:i:s");
 
-	function __construct($data=false) {
-		$this->data = $data ? array_intersect_key(
-			$data, 
+		$attributes = $attributes ? array_intersect_key(
+			$attributes,
 			array_flip(self::$allowedAttributes)
 		) : array(
 			"id" => md5(time()),
+			"creator" => "no creator",
+			"name" => "Untitled Event",
 			"description" => "no description",
+			"timerange" => array(
+				"start" => $timeNow,
+				"end" => $timeNow
+			),
+			"location" => "no location specified",
 			"isPrivate" => false,
-			"maxUsers" => self::NO_USER_LIMIT
+			"maxUsers" => self::NO_USER_LIMIT,
 		);
+
+		return $attributes;
 	}
 
-	function __set($fieldName, $newValue) {
-		if(in_array($fieldName, self::$allowedAttributes)) {
-			$this->data[$fieldName] = $newValue;
-		}
+	function isValidAttribute($attribute) {
+		return in_array($attribute, self::$allowedAttributes);
 	}
-
-	function __get($fieldName) {
-		if(in_array($fieldName, self::$allowedAttributes)) {
-			return $this->data[$fieldName];
-		}
-	}
-
-	function fromJson($json) {
-		foreach ($json as $key => $value) {
-			$this->data[$key] = $value;
-		}
-	}
-
-	function toJson() {
-		return $this->data;
-	}
-
 } // Event

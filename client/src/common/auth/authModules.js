@@ -1,17 +1,18 @@
 angular.module("authModules", ["ngCookies", "userResource"])
 .config(function($httpProvider) {
 	$httpProvider.interceptors.push("AuthInterceptor");
-	$httpProvider.interceptors.push("AuthInterceptor2");
 })
-.factory("AuthInterceptor", function($location, $q, UserCredentials) {
+
+.factory("AuthInterceptor", function($q, UserCredentials) {
 	return {
 		request: function(config) {
-			if(!UserCredentials.getID() && config.url.indexOf(".tpl.html") <= 0) {
-				$location.path("/login");
+			var credentials = UserCredentials.credentialsString();
+
+			if(credentials) {
+				config.headers.Authorization = "Basic " + credentials;
+			} else if(config.url.search(/leadershipAPI\/./) > -1) {
 				return $q.reject(config);
 			}
-
-			config.headers["Authorization"] = "Basic " + UserCredentials.getCredentialsString();
 
 			return config;
 		},
@@ -25,48 +26,79 @@ angular.module("authModules", ["ngCookies", "userResource"])
 	};
 })
 
-.factory("AuthInterceptor2", function($location, UserCredentials) {
+.factory("AccountService", function(User, SessionService, UserCredentials) {
+	var cacheSession = function(response) {
+		SessionService.set("AUTH_TOKEN", UserCredentials.credentialsString());
+		SessionService.setUser(response);
+	};
+
+	var unCacheSession = function() {
+		SessionService.unset("AUTH_TOKEN");
+	};
+
 	return {
-		request: function(config) {
-			return config;
+		login: function(credentials) {
+			UserCredentials.setCredentials(credentials.id, credentials.password);
+			var login = User.getUser({userID: credentials.id});
+			login.$promise.then(cacheSession);
+
+			return login.$promise;
 		},
-		responseError: function(response) {
-			return response;
+		logout: function() {
+
+		},
+		isLoggedIn: function() {
+			return !!SessionService.getUser();
+		},
+		signIn: function(data) {
+			console.log(data);
 		}
 	};
 })
 
-.factory("UserCredentials", function($cookieStore, Base64) {
+.factory("SessionService", function() {
+	var currentUser;
+
+	return {
+		get: function(key) {
+			return sessionStorage.getItem(key);
+		},
+		set: function(key, value) {
+			sessionStorage.setItem(key, value);
+		},
+		unset: function(key) {
+			return sessionStorage.removeItem(key);
+		},
+		getUser: function() {
+			return currentUser;
+		},
+		setUser: function(user) {
+			currentUser = user;
+		}
+	};
+})
+
+.factory("UserCredentials", function(Base64) {
 	var userID, userPass, credentialsString;
 
-	if((credentialsString = $cookieStore.get("AUTH_CREDENTIALS"))) {
+	if(credentialsString) {
 		var credentials = Base64.decode(credentialsString).split(":");
 
 		userID = credentials[0];
 		userPass = credentials[1];
 	}
 
-	function saveCredentials() {
+	var saveCredentials = function() {
 		credentialsString = Base64.encode(userID + ":" + userPass);
-		$cookieStore.put("AUTH_CREDENTIALS", credentialsString);
-	}
+	};
 
 	return {
-		setID: function(id) {
-			userID = id;
-		},
-		getID: function() {
-			return userID;
-		},
-		setPassword: function(pass) {
-			userPass = pass;
-		},
 		setCredentials: function(id, pass) {
 			userID = id;
 			userPass = pass;
 			saveCredentials();
 		},
-		getCredentialsString: function() {
+		credentialsString: function() {
 			return credentialsString;
 		}
 	};

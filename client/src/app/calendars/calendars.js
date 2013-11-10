@@ -1,5 +1,5 @@
 /**
-* MDLeadership.calendars Module
+* Module
 *
 * Description
 */

@@ -1,46 +1,26 @@
 <?php
 namespace MDLeadership\lib\resources;
 
-use MDLeadership\jsonSerializable;
-
-class User implements jsonSerializable {
+class User extends JsonableResource {
 	private static $allowedAttributes = array(
-		"id", 
-		"name", 
-		"grade", 
-		"email", 
+		"id",
+		"name",
+		"grade",
+		"email",
 		"password"
 	);
 
-	private $data;
-
-	function __construct($data=false) {
-		$this->data = $data ? array_intersect_key(
-			$data, 
+	protected function sanitizeAttributes($attributes) {
+		$attributes = $attributes ? array_intersect_key(
+			$attributes,
 			array_flip(self::$allowedAttributes)
 		) : array();
+
+		return $attributes;
 	}
 
-	function __set($fieldName, $newValue) {
-		if(in_array($fieldName, self::$allowedAttributes)) {
-			$this->data[$fieldName] = $newValue;
-		}
-	}
-
-	function __get($fieldName) {
-		if(in_array($fieldName, self::$allowedAttributes)) {
-			return $this->data[$fieldName];
-		}
-	}
-
-	function fromJson($json) {
-		foreach ($json as $key => $value) {
-			$this->data[$key] = $value;
-		}
-	}
-
-	function toJson() {
-		return $this->data;
+	protected function isValidAttribute($attribute) {
+		return in_array($attribute, self::$allowedAttributes);
 	}
 
 } // User

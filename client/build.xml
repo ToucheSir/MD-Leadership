@@ -1,0 +1,16 @@
+<project name="MDLeadershipClient" basedir=".">
+	<property name="root" location="" />
+	<target name="show-root-path">
+		<echo message="${root}"/>
+	</target>
+	
+	<property name="src" location="${root}/src" />
+	<property name="build" location="${root}/build" />
+
+	<target name="concat">
+		<concat destfile="${concat}/tree-concat.js" encoding="UTF-8" >
+			<filelist dir="${src}" files= "tree_data.js, tree.js">
+			</filelist>
+		</concat>
+	</target>
+</project>

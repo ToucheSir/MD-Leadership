@@ -11,7 +11,7 @@ $app->eventUserDAO = new DAOS\EventUserDAO();
 
 // $app->add(new MDLeadership\lib\BasicAuthMiddleware());
 
-$app->group("/events", function() use ($app) {
+$app->group("/events", "assignRoles", function() use ($app) {
 	// global event operations
 
 	/**
@@ -72,6 +72,18 @@ $app->group("/events", function() use ($app) {
 	});
 });
 
+function assignRoles(Route $route) {
+	$app = Slim::getInstance();
+	$auth = new Auth;
+	$groupDAO = new DAOS\GroupUserDAO();
+
+	if ($route->getParam("userID") === $app->currentUser->get("id")) {
+		// user is viewing self
+		$app->auth->addRole(Auth::VIEWING_SELF);
+	}
+	if ($groupDAO->userInGroup()) echo "oui";
+}
+
 function getEvents() {
 	$app = Slim::getInstance();
 	$events = $app->eventDAO->getAllEvents();
@@ -80,7 +92,7 @@ function getEvents() {
 		return $event->toJson();
 	}, $events);
 
-	echo JsonEncoder::encodeJson($events);
+	echo JsonEncoder::encode($events);
 }
 
 function postEvent() {
@@ -104,7 +116,7 @@ function getEvent($eventID) {
 
 	try {
 		$event = $app->eventDAO->getEventByID($eventID);
-		echo JsonEncoder::encodeJson($event->toJson());
+		echo JsonEncoder::encode($event->toJson());
 	} catch (Exception $e) {
 		$app->response->setStatus(404);
 	}
@@ -114,7 +126,7 @@ function putEvent($eventID) {
 	$app = Slim::getInstance();
 
 	try {
-		$eventBody = json_decode($app->request->getBody(), true);
+		$eventBody = $app->request->getBody();
 		$event = new Event($eventBody);
 		$app->eventDAO->updateEvent($event);
 	} catch (Exception $e) {
@@ -139,7 +151,7 @@ function getEventUsers($eventID) {
 	$userIDs = $app->eventUserDAO->getEventUsers($eventID);
 
 	$eventUserJson = array("eventID" => $eventID, "userIDs" => $userIDs);
-	echo JsonEncoder::encodeJson($eventUserJson);
+	echo JsonEncoder::encode($eventUserJson);
 }
 
 function getEventUser($eventID, $userID) {

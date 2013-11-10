@@ -1,5 +1,7 @@
 angular.module("eventsDisplay", ["eventResource", "userResource", "ui.bootstrap.modal"])
-.service("FormattedEventsService", function($q, Event, UserEvent) {
+.service("EventsService", function($q, Event, UserEvent) {
+	var maxEvents = 100;
+
 	this.getEvents = function(currentUserID) {
 		return $q.all([
 			Event.query().$promise,
@@ -18,39 +20,20 @@ angular.module("eventsDisplay", ["eventResource", "userResource", "ui.bootstrap.
 			return formattedEvents;
 		});
 	};
-})
 
-.factory("EventDialog", function($modal, Event) {
-	return {
-		dialog: function(eventInstance, dialogController) {
-			var modal = $modal.open({
-				templateUrl: "eventsDisplay/eventDialog.tpl.html",
-				controller: dialogController,
-				resolve: {
-					dialogEvent: function() {
-						return angular.copy(eventInstance);
-					}
-				}
-			});
-		},
-		createEvent: function(eventInstance) {
-			this.dialog(eventInstance || new Event(), "CreateEventCtrl");
-		},
-		editEvent: function(eventInstance) {
-			this.dialog(eventInstance, "EditEventCtrl");
-		}
+	this.setMaxEvents = function(eventsMax) {
+		maxEvents = eventsMax;
 	};
-})
 
-.controller("EventsDisplayCtrl", function($scope, EventDialog, FormattedEventsService, UserCredentials, UserEvent) {
-	$scope.events = FormattedEventsService.getEvents(UserCredentials.getID());
-	$scope.selectedEvent = {};
+	this.getMaxEvents = function() {
+		return maxEvents;
+	};
 
-	$scope.attendEvent = function(event) {
+	this.addUserToEvent = function(user, event) {
 		if(!event.attending) {
 			UserEvent.addUserEvent({
 				eventID: event.id,
-				userID: UserCredentials.getID()
+				userID: user.id
 			}).$promise.then(function() {
 				event.attending = true;
 			});
@@ -59,11 +42,11 @@ angular.module("eventsDisplay", ["eventResource", "userResource", "ui.bootstrap.
 		} // else
 	};
 
-	$scope.leaveEvent = function(event) {
+	this.removeUserFromEvent = function(user, event) {
 		if(event.attending) {
 			UserEvent.removeUserEvent({
 				eventID: event.id,
-				userID: UserCredentials.getID()
+				userID: user.id
 			}).$promise.then(function() {
 				event.attending = false;
 			});
@@ -71,18 +54,58 @@ angular.module("eventsDisplay", ["eventResource", "userResource", "ui.bootstrap.
 			alert("Not Attending Event");
 		} // else
 	};
+})
+
+.factory("EventDialog", function($modal, Event) {
+	var createEventModal = function(eventInstance, modalController) {
+		var modal = $modal.open({
+			templateUrl: "eventsDisplay/eventModal.tpl.html",
+			controller: modalController,
+			resolve: {
+				modalEvent: function() {
+					return angular.copy(eventInstance);
+				}
+			}
+		});
+	};
+
+	return {
+		createEvent: function(eventInstance) {
+			createEventModal(eventInstance || new Event(), "CreateEventCtrl");
+		},
+		editEvent: function(eventInstance) {
+			createEventModal(eventInstance, "EditEventCtrl");
+		}
+	};
+})
+
+.controller("EventsDisplayCtrl", function($scope, EventDialog, EventsService, SessionService) {
+	var user = SessionService.getUser();
+	// debugger;
+
+	$scope.events = EventsService.getEvents(user.id);
+	$scope.selectedEvent = {};
+	$scope.maxEvents = EventsService.getMaxEvents();
+
+	$scope.attendEvent = function(event) {
+		EventsService.addUserToEvent(user, event);
+	};
+
+	$scope.leaveEvent = function(event) {
+		EventsService.removeUserFromEvent(user, event);
+	};
 
 	$scope.createEvent = function() {
 		EventDialog.createEvent();
 	};
 })
 
-.controller("EditEventCtrl", function($scope, $modalInstance, dialogEvent) {
-	$scope.dialogEvent = dialogEvent;
+.controller("EditEventCtrl", function($scope, $modalInstance, modalEvent) {
+	$scope.modalEvent = modalEvent;
 	$scope.eventAction = "Editing";
 
 	$scope.saveEvent = function(event) {
-		$scope.dialogEvent.$updateEvent();
+		$scope.modalEvent.$updateEvent();
 		$modalInstance.dismiss("saved");
 	};
 
@@ -91,13 +114,13 @@ angular.module("eventsDisplay", ["eventResource", "userResource", "ui.bootstrap.
 	};
 })
 
-.controller("CreateEventCtrl", function($scope, $modalInstance, UserCredentials, dialogEvent) {
-	$scope.dialogEvent = dialogEvent;
+.controller("CreateEventCtrl", function($scope, $modalInstance, UserCredentials, modalEvent) {
+	$scope.modalEvent = modalEvent;
 	$scope.eventAction = "Editing";
 
 	$scope.saveEvent = function(event) {
-		$scope.dialogEvent.creator = UserCredentials.getID();
-		$scope.dialogEvent.$addEvent();
+		$scope.modalEvent.creator = UserCredentials.getID();
+		$scope.modalEvent.$addEvent();
 		$modalInstance.dismiss("created");
 	};
 

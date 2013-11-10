@@ -2,12 +2,12 @@
   "author": "Brian Chen",
   "name": "MD-Leadership",
   "version": "0.0.1",
-  "homepage": "http://bit.ly/ng-boilerplate",
+  "homepage": "",
   "licenses": {
     "type": "MIT",
-    "url": "https://raw.github.com/joshdmiller/ng-boilerplate/master/LICENSE"
+    "url": "https://raw.github.com/ToucheSir/MD-Leadership/master/LICENSE"
   },
-  "bugs": "https://github.com/joshdmiller/ng-boilerplate/issues",
+  "bugs": "https://github.com/ToucheSir/MD-Leadership/master/issues",
   "repository": {
     "type": "git",
     "url": "git@github.com:ToucheSir/MD-Leadership.git"
@@ -18,7 +18,7 @@
     "grunt-recess": "~0.3.0",
     "grunt-contrib-clean": "~0.4.1",
     "grunt-contrib-copy": "~0.4.1",
-    "grunt-contrib-jshint": "~0.4.3",
+    "grunt-contrib-jshint": "~0.6.4",
     "grunt-contrib-concat": "~0.3.0",
     "grunt-contrib-watch": "~0.4.0",
     "grunt-contrib-uglify": "~0.2.0",
@@ -29,8 +29,6 @@
     "grunt-coffeelint": "0.0.6",
     "grunt-conventional-changelog": "~0.1.1",
     "grunt-bump": "0.0.6",
-    "grunt-open": "~0.2.1",
-    "grunt-contrib-connect": "~0.3.0",
     "karma-junit-reporter": "~0.1.0"
   }
 }

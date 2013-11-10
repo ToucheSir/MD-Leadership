@@ -14,7 +14,6 @@
  */
 angular.module("MDLeadership.home", [
 	"ngRoute",
-	"ui.bootstrap",
 	"titleService",
 	"eventResource",
 	"userResource",
@@ -36,11 +35,8 @@ angular.module("MDLeadership.home", [
 /**
  * And of course we define a controller for our route.
  */
-.controller("HomeCtrl", function($scope, titleService, User, UserCredentials) {
+.controller("HomeCtrl", function($scope, titleService, SessionService) {
 	titleService.setTitle("Home");
 
-	$scope.currentUser = User.getUser({userID: UserCredentials.getID()});
-
-	$scope.eventProperties = {limit: 7};
-
+	$scope.currentUser = SessionService.getUser();
 });
