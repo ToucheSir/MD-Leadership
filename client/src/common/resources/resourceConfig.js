@@ -5,23 +5,23 @@
 */
 angular.module("resourceConfig", [])
 .config(function($httpProvider) {
-	// $httpProvider.defaults.cache = true;
+  // $httpProvider.defaults.cache = true;
 })
 
 .service("resourceConfigService", function($http) {
-	"use strict";
+  "use strict";
 
-	var headers = $http.defaults.headers;
+  var headers = $http.defaults.headers;
 
-	this.setHeaders = function(headers) {
-		angular.extend(headers.common, headers);
-	};
+  this.setHeaders = function(headers) {
+    angular.extend(headers.common, headers);
+  };
 
-	this.header = function(name, newValue) {
-		if(newValue) {
-			headers.common[name] = newValue;
-		}
+  this.header = function(name, newValue) {
+    if(newValue) {
+      headers.common[name] = newValue;
+    }
 
-		return headers.common[name];
-	};
+    return headers.common[name];
+  };
 });

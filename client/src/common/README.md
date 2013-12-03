@@ -22,6 +22,6 @@ src/
 - `titleService` - a service to change the page title, complete with a
   consistent suffix.
 
-Every component contained here should be drag-and-drop reusable in any other 
-project; they should depend on no other components that aren't similarly 
+Every component contained here should be drag-and-drop reusable in any other
+project; they should depend on no other components that aren't similarly
 drag-and-drop reusable.

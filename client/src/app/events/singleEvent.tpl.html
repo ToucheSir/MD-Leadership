@@ -1,76 +1,76 @@
 <div class="row">
-	<h1>Event: {{event.name}}</h1>
+  <h1>Event: {{event.name}}</h1>
 </div>
 <div class="row">
-	<div class="container">
-		<div data-ng-hide="editingEvent" class="">
-			<h3 class="list-group-item-heading">
-				{{event.name}}
-			</h3>
+  <div class="container">
+    <div data-ng-hide="editingEvent" class="">
+      <h3 class="list-group-item-heading">
+        {{event.name}}
+      </h3>
 
-			<section>
-				<i>By</i>
-				<span class="label label-default">
-					{{event.creator}}
-				</span>
-			</section>
+      <section>
+        <i>By</i>
+        <span class="label label-default">
+          {{event.creator}}
+        </span>
+      </section>
 
-			<form class="form-inline">
-				<div class="form-group">
-					<!-- <label for="startDate">Starts:</label> -->
-					<div class="input-group">
+      <form class="form-inline">
+        <div class="form-group">
+          <!-- <label for="startDate">Starts:</label> -->
+          <div class="input-group">
 
-					<input type="text" name="startDate" class="form-control" data-ng-readonly="true" datepicker-popup="dd-MMMM-yyyy" data-ng-model="event.timerange.start" is-open="startStatic"
-					min="minDate"
-					max="'2015-06-22'"
-					datepicker-options="dateOptions"
-					date-disabled="true"
-					/>
+          <input type="text" name="startDate" class="form-control" data-ng-readonly="true" datepicker-popup="dd-MMMM-yyyy" data-ng-model="event.timerange.start" is-open="startStatic"
+          min="minDate"
+          max="'2015-06-22'"
+          datepicker-options="dateOptions"
+          date-disabled="true"
+          />
 
-					<span class="input-group-btn">
-						<button class="btn btn-info" ng-click="openCalendar('startStatic')">
-							<span class="glyphicon glyphicon-calendar"></span>
-						</button>
-					</span>
-					</div>
-				</div>
+          <span class="input-group-btn">
+            <button class="btn btn-info" ng-click="openCalendar('startStatic')">
+              <span class="glyphicon glyphicon-calendar"></span>
+            </button>
+          </span>
+          </div>
+        </div>
 
-				<span> To </span>
+        <span> To </span>
 
-				<div class="form-group">
-					<!-- <label for="endDate">Ends:</label> -->
-					<div class="input-group">
+        <div class="form-group">
+          <!-- <label for="endDate">Ends:</label> -->
+          <div class="input-group">
 
-						<input type="text" name="endDate" class="form-control" data-ng-readonly="true" datepicker-popup="dd-MMMM-yyyy" data-ng-model="event.timerange.end" is-open="endStatic"
-						min="event.timerange.start"
-						max="'2015-06-22'"
-						datepicker-options="dateOptions"
-						date-disabled="true"
-						/>
+            <input type="text" name="endDate" class="form-control" data-ng-readonly="true" datepicker-popup="dd-MMMM-yyyy" data-ng-model="event.timerange.end" is-open="endStatic"
+            min="event.timerange.start"
+            max="'2015-06-22'"
+            datepicker-options="dateOptions"
+            date-disabled="true"
+            />
 
-						<span class="input-group-btn">
-							<button class="btn btn-info" ng-click="openCalendar('endStatic')">
-								<span class="glyphicon glyphicon-calendar"></span>
-							</button>
-						</span>
-					</div>
-				</div>
-			</form>
+            <span class="input-group-btn">
+              <button class="btn btn-info" ng-click="openCalendar('endStatic')">
+                <span class="glyphicon glyphicon-calendar"></span>
+              </button>
+            </span>
+          </div>
+        </div>
+      </form>
 
-			<section>
-				<h4> Description: </h4>
-				<p class="list-group-item-text blurb">
-					{{event.description}}
-				</p>
-			</section>
+      <section>
+        <h4> Description: </h4>
+        <p class="list-group-item-text blurb">
+          {{event.description}}
+        </p>
+      </section>
 
 
-			<button class="btn btn-primary" data-ng-click="editEvent()">
-				Edit Event
-			</button>
+      <button class="btn btn-primary" data-ng-click="editEvent()">
+        Edit Event
+      </button>
 
-		</div>
-		<div data-ng-show="editingEvent" class="">
-		</div>
-	</div>
+    </div>
+    <div data-ng-show="editingEvent" class="">
+    </div>
+  </div>
 </div>

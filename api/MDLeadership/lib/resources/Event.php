@@ -1,5 +1,4 @@
 <?php
-
 namespace MDLeadership\lib\resources;
 
 class Event extends JsonableResource {
@@ -16,7 +15,7 @@ class Event extends JsonableResource {
 		"maxUsers"
 	);
 
-	function sanitizeAttributes($attributes) {
+	protected function sanitizeAttributes($attributes) {
 		$timeNow = new \DateTime();
 		$timeNowISO = $timeNow->format("Y-m-dTH:i:s");
 
@@ -40,7 +39,7 @@ class Event extends JsonableResource {
 		return $attributes;
 	}
 
-	function isValidAttribute($attribute) {
+	protected function isValidAttribute($attribute) {
 		return in_array($attribute, self::$allowedAttributes);
 	}
 } // Event

@@ -13,11 +13,11 @@
  * specified, as shown below.
  */
 angular.module("MDLeadership.home", [
-	"ngRoute",
-	"titleService",
-	"eventResource",
-	"userResource",
-	"eventsDisplay"
+  "ngRoute",
+  "titleService",
+  "eventResource",
+  "userResource",
+  "eventsDisplay"
 ])
 
 /**
@@ -36,7 +36,7 @@ angular.module("MDLeadership.home", [
  * And of course we define a controller for our route.
  */
 .controller("HomeCtrl", function($scope, titleService, SessionService) {
-	titleService.setTitle("Home");
+  titleService.setTitle("Home");
 
-	$scope.currentUser = SessionService.getUser();
+  $scope.currentUser = SessionService.getUser();
 });

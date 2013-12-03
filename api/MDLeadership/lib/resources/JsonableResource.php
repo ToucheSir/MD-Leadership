@@ -6,7 +6,7 @@ use MDLeadership\jsonSerializable;
 abstract class JsonableResource implements \ArrayAccess, jsonSerializable {
 	protected $data = array();
 
-	public function __construct($data=false) {
+	public function __construct($data = false) {
 		$this->data = $this->sanitizeAttributes($data);
 	}
 
@@ -52,6 +52,6 @@ abstract class JsonableResource implements \ArrayAccess, jsonSerializable {
 		return $this->data;
 	}
 
-	protected abstract function isValidAttribute($attribute);
-	protected abstract function sanitizeAttributes($attributes);
+	abstract protected function isValidAttribute($attribute);
+	abstract protected function sanitizeAttributes($attributes);
 }

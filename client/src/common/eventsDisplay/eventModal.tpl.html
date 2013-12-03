@@ -1,71 +1,71 @@
 <div class="modal-header">
-	<h3>{{eventAction}}: {{modalEvent.name}}</h3>
+  <h3>{{eventAction}}: {{modalEvent.name}}</h3>
 </div>
 <div class="modal-body">
-	<form name="editEvent" class="form-horizontal">
-		<div class="form-group">
-			<label for="eventName">Name: </label>
-			<input type="text" name="eventName" class="form-control" data-ng-model="modalEvent.name" data-ng-required="true" />
-		</div>
+  <form name="editEvent" class="form-horizontal">
+    <div class="form-group">
+      <label for="eventName">Name: </label>
+      <input type="text" name="eventName" class="form-control" data-ng-model="modalEvent.name" data-ng-required="true" />
+    </div>
 
-		<div class="form-group">
-			<label for="startDate">Starts: </label>
-			<div class="input-group">
-				<input type="text" name="startDate" class="form-control" datepicker-popup="dd-MMMM-yyyy" data-ng-model="modalEvent.timerange.start" is-open="startEdit"
-				min="minDate"
-				max="modalEvent.timerange.end"
-				datepicker-options="dateOptions"
-				date-disabled="false"
-				data-ng-required="true"
-				/>
+    <div class="form-group">
+      <label for="startDate">Starts: </label>
+      <div class="input-group">
+        <input type="text" name="startDate" class="form-control" datepicker-popup="dd-MMMM-yyyy" data-ng-model="modalEvent.timerange.start" is-open="startEdit"
+        min="minDate"
+        max="modalEvent.timerange.end"
+        datepicker-options="dateOptions"
+        date-disabled="false"
+        data-ng-required="true"
+        />
 
-				<span class="input-group-btn">
-					<button class="btn btn-info" ng-click="openCalendar('startEdit')">
-						<span class="glyphicon glyphicon-calendar"></span>
-					</button>
-				</span>
-			</div>
-		</div>
+        <span class="input-group-btn">
+          <button class="btn btn-info" ng-click="openCalendar('startEdit')">
+            <span class="glyphicon glyphicon-calendar"></span>
+          </button>
+        </span>
+      </div>
+    </div>
 
-		<div class="form-group">
-			<label for="endDate">Ends: </label>
-			<div class="input-group">
+    <div class="form-group">
+      <label for="endDate">Ends: </label>
+      <div class="input-group">
 
-				<input type="text" name="endDate" class="form-control" datepicker-popup="dd-MMMM-yyyy" data-ng-model="modalEvent.timerange.end" is-open="endEdit"
-				min="modalEvent.timerange.start"
-				max="'2015-06-22'"
-				datepicker-options="dateOptions"
-				date-disabled="disabled(date, mode)"
-				data-ng-required="true"
-				/>
+        <input type="text" name="endDate" class="form-control" datepicker-popup="dd-MMMM-yyyy" data-ng-model="modalEvent.timerange.end" is-open="endEdit"
+        min="modalEvent.timerange.start"
+        max="'2015-06-22'"
+        datepicker-options="dateOptions"
+        date-disabled="disabled(date, mode)"
+        data-ng-required="true"
+        />
 
-				<span class="input-group-btn">
-					<button class="btn btn-info" ng-click="openCalendar('endEdit')">
-						<span class="glyphicon glyphicon-calendar"></span>
-					</button>
-				</span>
-			</div>
-		</div>
+        <span class="input-group-btn">
+          <button class="btn btn-info" ng-click="openCalendar('endEdit')">
+            <span class="glyphicon glyphicon-calendar"></span>
+          </button>
+        </span>
+      </div>
+    </div>
 
-		<div class="form-group">
-			<label for="description">Description: </label>
-			<textarea name="description" class="form-control" rows="5" data-ng-model="modalEvent.description">
-			</textarea>
-		</div>
+    <div class="form-group">
+      <label for="description">Description: </label>
+      <textarea name="description" class="form-control" rows="5" data-ng-model="modalEvent.description">
+      </textarea>
+    </div>
 
-		<div class="form-group">
-			<label for="isPrivate">Private Event?: </label>
-			<input type="checkbox" name="isPrivate" data-ng-model="modalEvent.isPrivate" />
-		</div>
+    <div class="form-group">
+      <label for="isPrivate">Private Event?: </label>
+      <input type="checkbox" name="isPrivate" data-ng-model="modalEvent.isPrivate" />
+    </div>
 
-		<div class="form-group">
-			<label for="maxUsers">How many people can sign up?: </label>
-			<input type="number" name="maxUsers" class="form-control" data-ng-required="true" data-ng-model="modalEvent.maxUsers" min="0" max="2000" />
-		</div>
-	</form>
+    <div class="form-group">
+      <label for="maxUsers">How many people can sign up?: </label>
+      <input type="number" name="maxUsers" class="form-control" data-ng-required="true" data-ng-model="modalEvent.maxUsers" min="0" max="2000" />
+    </div>
+  </form>
 
 </div>
 <div class="modal-footer">
-	<button class="btn btn-primary" ng-click="saveEvent(modalEvent)">Save</button>
-	<button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+  <button class="btn btn-primary" ng-click="saveEvent(modalEvent)">Save</button>
+  <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
 </div>

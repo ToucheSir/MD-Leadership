@@ -1,6 +1,7 @@
 {
     "require": {
         "slim/slim": "2.*",
-        "slim/extras": "*"
+        "slim/extras": "*",
+        "fabpot/php-cs-fixer": "*"
     }
 }

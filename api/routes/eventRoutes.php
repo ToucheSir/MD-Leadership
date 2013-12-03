@@ -81,7 +81,9 @@ function assignRoles(Route $route) {
 		// user is viewing self
 		$app->auth->addRole(Auth::VIEWING_SELF);
 	}
-	if ($groupDAO->userInGroup()) echo "oui";
+	if ($groupDAO->userInGroup()) {
+		echo "oui";
+	}
 }
 
 function getEvents() {

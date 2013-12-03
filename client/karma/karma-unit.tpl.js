@@ -1,7 +1,7 @@
 module.exports = function ( karma ) {
   'use strict';
   karma.set({
-    /** 
+    /**
      * From where to look for files, starting with the location of this file.
      */
     basePath: '../',
@@ -25,7 +25,7 @@ module.exports = function ( karma ) {
     /**
      * How to report, by default.
      */
-    reporters: ['dots', 'junit'],
+    reporters: ['dots'],
 
     /**
      * On which port should the browser connect, on which port is the test runner
@@ -34,7 +34,7 @@ module.exports = function ( karma ) {
     port: 9876,
     urlRoot: '/',
 
-    /** 
+    /**
      * Disable file watching by default.
      */
     autoWatch: false,

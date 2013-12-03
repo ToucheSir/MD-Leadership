@@ -22,5 +22,4 @@ class User extends JsonableResource {
 	protected function isValidAttribute($attribute) {
 		return in_array($attribute, self::$allowedAttributes);
 	}
-
 } // User

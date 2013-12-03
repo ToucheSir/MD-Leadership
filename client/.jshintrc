@@ -1,21 +1,26 @@
 {
-  "browser": true,
-  "devel": true,
-  "node": true,
-  "globals": {
-    "angular": false
-  },
-  "strict": false,
-  "quotmark": true,
-  "smarttabs": true,
-  "trailing": true,
-  "undef": true,
-  "unused": false,
-  "sub": true,
-  "debug": true,
-  "curly": true,
-  "immed": true,
-  "newcap": true,
-  "noarg": true,
-  "boss": true
+	"browser": true,
+	"devel": true,
+	"node": true,
+	"globals": {
+		"angular": false,
+		"beforeEach": false,
+		"describe": false,
+		"it": false,
+		"expect": false,
+		"inject": true
+	},
+	"strict": false,
+	"quotmark": true,
+	"smarttabs": true,
+	"trailing": true,
+	"undef": true,
+	"unused": false,
+	"sub": true,
+	"debug": true,
+	"curly": true,
+	"immed": true,
+	"newcap": true,
+	"noarg": true,
+	"boss": true
 }
