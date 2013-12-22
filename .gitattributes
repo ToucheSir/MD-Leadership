@@ -1,0 +1,18 @@
+* text=auto
+
+# text files to be normalized
+# just a big catch-all for now...
+*.js text
+*.html text
+*.css text
+*.php text
+*.md text
+*.yml text
+*.json text
+*.php text
+*.xml text
+
+*.png binary
+*.jpg binary
+*.gif binary
+

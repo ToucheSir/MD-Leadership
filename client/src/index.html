@@ -1,109 +1,109 @@
 <!DOCTYPE html>
 <html ng-app="MDLeadership" data-ng-controller="AppCtrl">
-	<head>
-		<title>MD-Leadership</title>
+  <head>
+    <title>MD-Leadership</title>
 
-		<meta charset="utf-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta name="description" content="Events and Signups, yo." />
-		<meta name="author" content="The Hon. Brian Chen" />
-		<link rel="shortcut icon" href="assets/images/favicon.png" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Events and Signups, yo." />
+    <meta name="author" content="The Hon. Brian Chen" />
+    <link rel="shortcut icon" href="assets/images/favicon.png" />
 
-		<!-- compiled CSS -->
-		<% styles.forEach( function ( file ) { %>
-			<link rel="stylesheet" type="text/css" href="<%= file %>" />
-		<% }); %>
+    <!-- compiled CSS -->
+    <% styles.forEach( function ( file ) { %>
+    <link rel="stylesheet" type="text/css" href="<%= file %>" />
+    <% }); %>
 
-		<!--[if lt IE 9]>
-			<script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js"></script>
-			<script src="http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.2.0/respond.js></script>
-		<![endif]-->
+    <!--[if lt IE 9]>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js"></script>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.2.0/respond.js></script>
+    <![endif]-->
 
-		<!-- compiled JS -->
-		<% scripts.forEach(function(file) { %>
-			<script type="text/javascript" src="<%= file %>"></script>
-		<% }); %>
+    <!-- compiled JS -->
+    <% scripts.forEach(function(file) { %>
+      <script type="text/javascript" src="<%= file %>"></script>
+    <% }); %>
 
-	</head>
-	<body>
-		<div id="wrap">
-			<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="#/home">
-						MD Leadership
-						<img src="assets/images/snake.gif" data-ng-show="allResolved()"/>
-					</a>
-				</div>
+  </head>
+  <body>
+    <div id="wrap">
+      <div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#/home">
+            MD Leadership
+          </a>
+          <div class="spinner" ng-show="allResolved()"></div>
+        </div>
 
-				<div class="navbar-collapse collapse in">
-					<ul class="nav navbar-nav">
-						<li data-ng-class="{active: tabActive('Home')}">
-							<a href="#/home">Home</a>
-						</li>
-						<li data-ng-class="{active: tabActive('Events')}">
-							<a href="#/events">Events</a>
-						</li>
-						<li data-ng-class="{active: tabActive('Calendars')}">
-							<a href="#/calendars">Calendars</a>
-						</li>
-					</ul>
+        <div class="navbar-collapse collapse in">
+          <ul class="nav navbar-nav">
+            <li data-ng-class="{active: tabActive('Home')}">
+              <a href="#/home">Home</a>
+            </li>
+            <li data-ng-class="{active: tabActive('Events')}">
+              <a href="#/events">Events</a>
+            </li>
+            <li data-ng-class="{active: tabActive('Calendars')}">
+              <a href="#/calendars">Calendars</a>
+            </li>
+          </ul>
 
-					<ul class="nav navbar-nav navbar-right">
+          <ul class="nav navbar-nav navbar-right">
 
-						<li data-ng-class="{active: tabActive('Account')}">
-							<a href="#/account">Account</a>
-						</li>
-						<li data-ng-class="{active: tabActive('Contact')}">
-							<a href="#/contact">Contact</a>
-						</li>
-						<li class="dropdown" data-ng-class="{active: tabActive('Admin')}">
-							<a href="#/Admin" class="dropdown-toggle" data-toggle="dropdown">Admin<b class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<li>
-									<a href="#/Admin/users">Manage Users</a>
-								</li>
-								<li>
-									<a href="#/Admin/events">Manage Events</a>
-								</li>
-								<li class="divider"></li>
-								<li>
-									<a href="#/Admin">Admin Console</a>
-								</li>
-							</ul>
-						</li>
-					</ul>
-				</div>
-			</div>
+            <li data-ng-class="{active: tabActive('Account')}">
+              <a href="#/account">Account</a>
+            </li>
+            <li data-ng-class="{active: tabActive('Contact')}">
+              <a href="#/contact">Contact</a>
+            </li>
+            <li class="dropdown" data-ng-class="{active: tabActive('Admin')}">
+              <a href="#/Admin" class="dropdown-toggle" data-toggle="dropdown">Admin<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="#/Admin/users">Manage Users</a>
+                </li>
+                <li>
+                  <a href="#/Admin/events">Manage Events</a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                  <a href="#/Admin">Admin Console</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
 
-			<!--[if lte IE 8]>
-				<div style='clear: both; height: 112px; padding:0; position: relative;'>
-					<a href="http://www.theie8countdown.com/ie-users-info">
-						<img src="http://www.theie8countdown.com/assets/badge_iecountdown.png" border="0" height="112" width="348" alt="" />
-					</a>
-				</div>
-			<![endif]-->
+      <!--[if lte IE 8]>
+        <div style='clear: both; height: 112px; padding:0; position: relative;'>
+          <a href="http://www.theie8countdown.com/ie-users-info">
+            <img src="http://www.theie8countdown.com/assets/badge_iecountdown.png" border="0" height="112" width="348" alt="" />
+          </a>
+        </div>
+      <![endif]-->
 
-			<div data-ng-view="" class="view-container">
-				<strong>
-					You be seeing 'dis 'cuz you ain't got JS enabled.
-				</strong>
-			</div>
-		</div>
+      <div data-ng-view="" class="view-container">
+        <strong>
+          You be seeing 'dis 'cuz you ain't got JS enabled.
+        </strong>
+      </div>
+    </div>
 
-		<div id="footer">
-			<div class="container">
-				<p class="copyright">
-					<a href="#/about">
-						&copy; 2013 Garrett McDonald, Tahna Kabir and Brian Chen
-					</a>
-				</p>
-			</div>
-		</div>
-	</body>
+    <div id="footer">
+      <div class="container">
+        <p class="copyright">
+          <a href="#/about">
+            &copy; 2013 Garrett McDonald, Tahna Kabir and Brian Chen
+          </a>
+        </p>
+      </div>
+    </div>
+  </body>
 </html>
